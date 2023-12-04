@@ -1,0 +1,29 @@
+{
+  "assets": {
+    "cash": [
+      {
+        "ticker": "MSFT",
+        "basisCost": 10.0,
+        "description": "AI is eating the world"
+      }
+    ],
+    "stocks": [
+      {
+        "issuingAgency": "US Treasury",
+        "bondSeries": "EE",
+        "initialValue": 100,
+        "targetValue": 200,
+        "maturityInMonths": 360
+      }
+    ],
+    "bonds": [
+      {
+        "issuingAgency": "US Treasury",
+        "bondSeries": "EE",
+        "initialValue": 100,
+        "targetValue": 200,
+        "maturityInMonths": 360
+      }
+    ]
+  }
+}
