@@ -2,7 +2,9 @@
   "assets": {
     "cash": [
       {
+        "accountNumber": "23424234-23423-5334",
         "ticker": "MSFT",
+        "accountType": "SAVINGS",
         "basisCost": 10.0,
         "description": "AI is eating the world"
       }

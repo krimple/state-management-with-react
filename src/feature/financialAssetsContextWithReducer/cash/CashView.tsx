@@ -1,8 +1,8 @@
-import { FinancialAssetsContext, useFinancialAssetsWithContext } from '../useFinancialAssetsWithContext.ts';
+import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer.ts';
 import Cash from './Cash';
 
 export default function CashView() {
-  const cash = useFinancialAssetsWithContext(FinancialAssetsContext).cash;
+  const {cash}= useFinancialAssetsContext().state;
   const cashElements = cash.map(cashEntry => <Cash cash={cashEntry} />);
   return (
     <>
