@@ -1,4 +1,4 @@
-import { Context, createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { BondAssetType, CashAssetType, StockAssetType } from '../../types';
 
 export type FinancialAssetsContextType = {
@@ -25,8 +25,8 @@ export const FinancialAssetsContext = createContext<FinancialAssetsContextType>(
 
 export const FinancialAssetsContextProvider = FinancialAssetsContext.Provider;
 
-export function useFinancialAssetsWithContext(context: Context<FinancialAssetsContextType>) {
-  const faContext = useContext<FinancialAssetsContextType>(context);
+export function useFinancialAssetsWithContext() {
+  const faContext = useContext(FinancialAssetsContext);
   if (!faContext) {
     throw new Error("Not using the Financial Assets Context within a provider.");
   }

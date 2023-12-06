@@ -11,7 +11,7 @@ function App() {
       <FinancialAssetsContextDriven />
 
       <h2>FA Using Context+Reducer</h2>
-      {/*<FinancialAssetsContextWithReducer />*/}
+      <FinancialAssetsContextWithReducer />
     </>
   )
 }

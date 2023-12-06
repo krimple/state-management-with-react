@@ -1,6 +1,6 @@
-import CashView from '../financialAssetsContext/cash/CashView';
-import StocksView from '../financialAssetsContext/stocks/StocksView';
-import BondsView from '../financialAssetsContext/bonds/BondsView';
+import CashView from './cash/CashView';
+import StocksView from './stocks/StocksView';
+import BondsView from './bonds/BondsView';
 import { useEffect } from 'react';
 import { FinancialAssetsState } from './financial-assets-reducer.ts';
 import {

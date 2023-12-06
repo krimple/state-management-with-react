@@ -2,6 +2,7 @@
   "assets": {
     "cash": [
       {
+        "id": 1,
         "accountNumber": "23424234-23423-5334",
         "ticker": "MSFT",
         "accountType": "SAVINGS",
@@ -11,6 +12,7 @@
     ],
     "stocks": [
       {
+        "id": 1,
         "issuingAgency": "US Treasury",
         "bondSeries": "EE",
         "initialValue": 100,
@@ -20,6 +22,7 @@
     ],
     "bonds": [
       {
+        "id": 1,
         "issuingAgency": "US Treasury",
         "bondSeries": "EE",
         "initialValue": 100,

@@ -1,9 +1,9 @@
-import { useFinancialAssetsWithContext, FinancialAssetsContext } from '../useFinancialAssetsWithContext.ts';
+import { useFinancialAssetsWithContext } from '../useFinancialAssetsWithContext.ts';
 import Stock from './Stock';
 
 export default function StocksView() {
-  const { stocks } = useFinancialAssetsWithContext(FinancialAssetsContext);
-  const stockElements = stocks.map((stock ) => (<Stock stock={stock}/>));
+  const { stocks } = useFinancialAssetsWithContext();
+  const stockElements = stocks.map((stock) => (<Stock key={stock.id} stock={stock}/>));
   return (
     <>
       <h3>Stocks</h3>
