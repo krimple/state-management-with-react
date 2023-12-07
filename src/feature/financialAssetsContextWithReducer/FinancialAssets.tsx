@@ -6,6 +6,7 @@ import { FinancialAssetsState } from './financial-assets-reducer.ts';
 import {
   useFinancialAssetsContext
 } from './useFinancialAssetsContextWithReducer.ts';
+import Card from '../../components/Card.tsx';
 
 export default function FinancialAssets() {
   const { dispatch} = useFinancialAssetsContext();
@@ -22,9 +23,9 @@ export default function FinancialAssets() {
 
   return (
     <>
-      <StocksView />
-      <BondsView />
-      <CashView />
+      <Card title="Stocks"><StocksView /></Card>
+      <Card title="Bonds"><BondsView /></Card>
+      <Card title="Cash"><CashView /></Card>
     </>
   )
 }

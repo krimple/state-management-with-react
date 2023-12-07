@@ -6,7 +6,6 @@ export default function StocksView() {
   const stockElements = stocks.map((stock ) => (<Stock key={stock.id} stock={stock}/>));
   return (
     <>
-      <h3>Stocks</h3>
       { stockElements }
     </>
     )
