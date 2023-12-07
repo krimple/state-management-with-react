@@ -1,56 +1,52 @@
-import { BondAssetType, CashAssetType, StockAssetType } from '../../types';
+import { FinancialAssetType } from '../../types';
+import { Dispatch } from 'react';
 
 export interface FinancialAssetsState {
-  stocks: StockAssetType[];
-  bonds: BondAssetType[];
-  cash: CashAssetType[];
+  assets: Array<FinancialAssetType>;
 }
 
 export type LoadDataAction = {
   type: 'LOAD_DATA',
-  payload: FinancialAssetsState
+  payload: FinancialAssetType[]
 };
 
-export type UpdateStockAction = {
-  type: 'UPDATE_STOCK',
-  payload: StockAssetType
+export type UpdateAssetAction = {
+  type: 'UPDATE_ASSET',
+  payload: FinancialAssetType
 };
 
-export type UpdateBondAction = {
-  type: 'UPDATE_BOND',
-  payload: BondAssetType
-};
+// TODO can we pull the dispatch method in this file, and not force it into the component? Doubtful but maybe.
+export async function doLoadData(dispatch: Dispatch<Actions>) {
+  const responses = await Promise.all([
+    fetch('/api/cash'),
+    fetch('/api/bonds'),
+    fetch('/api/stocks')
+  ]);
+  if (responses.find(r => !r.ok)) {
+    throw new Error('Failed response. Check logs.');
+  }
+  const jsonResults = await Promise.all<any>([
+    responses[0].json(),
+    responses[1].json(),
+    responses[2].json(),
+  ]);
+  const flatResults = jsonResults.flat() as FinancialAssetType[];
 
-export type UpdateCashAction = {
-  type: 'UPDATE_CASH',
-  payload: CashAssetType
-};
+  // now send it off to the reducer
+  dispatch({type: 'LOAD_DATA', payload: flatResults});
+}
 
-export type Actions = LoadDataAction | UpdateBondAction | UpdateStockAction | UpdateCashAction;
+export type Actions = LoadDataAction | UpdateAssetAction;
 
-// TODO - split into three slices?
 export default function financialAssetsReducer(state: FinancialAssetsState, action: Actions) {
   switch (action.type) {
     case 'LOAD_DATA':
-      return {...action.payload};
-    case 'UPDATE_STOCK':
-      // maybe easier with immer?
-      const stockIdx = state.stocks.findIndex((s: StockAssetType)=> (s.id === action.payload.id));
-      // did we find the stock to patch?
-      if (stockIdx > -1) {
-        return {
-          bonds: [...state.bonds],
-          cash: [...state.cash],
-          stocks: [
-            ...state.stocks.slice(0, stockIdx -1),
-            { ...action.payload },
-            ...state.stocks.slice(stockIdx +1)
-          ]
-        }
-      }
-      // otherwise fall out and return existing state
-      return state;
-    default:
+      return {assets: [...action.payload]};
+    case 'UPDATE_ASSET':
+      return {
+        assets: state.assets.map(asset => asset.id === action.payload.id ? action.payload : asset)
+      };
+   default:
       return state;
   }
 }

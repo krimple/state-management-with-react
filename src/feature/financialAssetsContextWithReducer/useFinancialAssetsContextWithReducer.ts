@@ -5,12 +5,7 @@ import type {FinancialAssetsState, Actions} from './financial-assets-reducer.ts'
 // the provider when we mount it with a value. This default is to avoid having a type | undefined
 // for TypeScript and forcing optional checks when accessing the context data.
 export const seedFinancialAssets : FinancialAssetsState = {
-  stocks: [
-  ],
-  bonds: [
-  ],
-  cash: [
-  ]
+  assets: []
 };
 
 // the actual state and dispatch represented by a reducer

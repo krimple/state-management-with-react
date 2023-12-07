@@ -8,7 +8,7 @@ function App() {
     <div className='w-auto rounded-panel'>
       <h1>Demos</h1>
       <h2>FA Using Context</h2>
-      <FinancialAssetsContextDriven />
+      {/*<FinancialAssetsContextDriven />*/}
 
       <h2>FA Using Context+Reducer</h2>
       <FinancialAssetsContextWithReducer />

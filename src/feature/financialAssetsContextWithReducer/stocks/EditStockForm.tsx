@@ -35,7 +35,7 @@ export default function EditStockForm({stock, onClose}: EditStockFormProps) {
   }
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    dispatch({type: 'UPDATE_STOCK', payload: stockData});
+    dispatch({type: 'UPDATE_ASSET', payload: stockData});
     onClose();
   }
 

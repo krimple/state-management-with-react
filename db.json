@@ -1,32 +1,28 @@
 {
-  "assets": {
-    "cash": [
-      {
-        "id": 1,
-        "accountNumber": "23424234-23423-5334",
-        "ticker": "MSFT",
-        "accountType": "SAVINGS",
-        "basisCost": 10.0,
-        "description": "AI is eating the world"
-      }
-    ],
-    "stocks": [
-      {
-        "id": 1,
-        "ticker": "MSFT",
-        "basisCost": 100,
-        "description": "Microsoft Common Stock"
-      }
-    ],
-    "bonds": [
-      {
-        "id": 1,
-        "issuingAgency": "US Treasury",
-        "bondSeries": "EE",
-        "initialValue": 100,
-        "targetValue": 200,
-        "maturityInMonths": 360
-      }
-    ]
-  }
+  "cash": [
+    {
+      "id": 1,
+      "accountNumber": "23424234-23423-5334",
+      "accountType": "SAVINGS",
+      "value": 505.34
+    }
+  ],
+  "stocks": [
+    {
+      "id": 2,
+      "ticker": "MSFT",
+      "basisCost": 100,
+      "description": "Microsoft Common Stock"
+    }
+  ],
+  "bonds": [
+    {
+      "id": 3,
+      "issuingAgency": "US Treasury",
+      "bondSeries": "EE",
+      "initialValue": 100,
+      "targetValue": 200,
+      "maturityInMonths": 360
+    }
+  ]
 }
