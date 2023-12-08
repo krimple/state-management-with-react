@@ -19,11 +19,11 @@ export default function Cash({cash}: CashProps) {
   return (
     <>
       {!editing &&
-          <div>
+          <section>
               Cash in {''.concat('XXXXXX', cash.accountNumber.substring(-1, 5))} -
               Value: {cash.balance} -
               Type: {cash.accountType}
-          </div>
+          </section>
       }
       { editing &&
           <EditCashForm cash={cash} onClose={() => setEditing(false)} /> }

@@ -11,8 +11,9 @@
     {
       "id": 2,
       "ticker": "MSFT",
-      "basisCost": 100,
-      "description": "Microsoft Common Stock"
+      "basisCost": 200,
+      "currentValue": 232,
+      "description": "Microsoft"
     }
   ],
   "bonds": [

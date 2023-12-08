@@ -2,14 +2,15 @@ import { BondAsset } from '../../../types';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer.ts';
 import Button from '../../../components/Button.tsx';
+import { doSaveAsset } from '../financial-assets-reducer.ts';
 
 interface EditBondFormProps {
   bond: BondAsset,
   onClose: () => void
 }
-export default function EditBondForm({bond, onClose}: EditBondFormProps) {
+export default function EditBondForm({bond: originalBondData, onClose}: EditBondFormProps) {
 
-  const [bondData, setBondData] = useState<BondAsset>(bond);
+  const [bondData, setBondData] = useState<BondAsset>(originalBondData);
   const {dispatch} = useFinancialAssetsContext();
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -43,10 +44,14 @@ export default function EditBondForm({bond, onClose}: EditBondFormProps) {
         break;
     }
   }
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    dispatch({type: 'UPDATE_ASSET', payload: bondData});
-    onClose();
+    try {
+      await doSaveAsset(bondData, dispatch);
+      onClose();
+    } catch (e) {
+      alert('Update failed. If I were a toast system you would like me. Check the logs in your browser and json-server');
+    }
   }
 
   return (

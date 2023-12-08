@@ -19,11 +19,12 @@ export default function Stock({stock}: StockProps) {
   return (
     <>
      { !editing &&
-          <div>
+          <section>
               Ticker: {stock.ticker} -
               Basis: {stock.basisCost} -
+              Current: {stock.currentValue} -
               Info: {stock.description}
-          </div>
+          </section>
       }
       { editing &&
         <EditStockForm stock={stock} onClose={() => setEditing(false)} /> }

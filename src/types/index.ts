@@ -2,6 +2,7 @@ export interface StockAsset {
   id: number,
   ticker: string,
   basisCost: number,
+  currentValue: number,
   description: string
 }
 

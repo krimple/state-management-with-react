@@ -15,26 +15,29 @@ export default function Bond({bond}: BondProps) {
   }
 
   return (
-    <>
+    <div>
       { !editing &&
-        <div>
+        <section>
             Bond: {bond.issuingAgency} -
             Series {bond.bondSeries} -
             Initial Value {bond.initialValue} -
             Term {bond.maturityInMonths} months -
             Target value {bond.targetValue}
-        </div>
+        </section>
       }
 
       { editing &&
-        <EditBondForm bond={bond} onClose={() => setEditing(false) } />
+          <section>
+            <EditBondForm bond={bond} onClose={() => setEditing(false) } />
+          </section>
       }
+
       <Button
         type="button"
         label={ editing ? 'Close' : 'Edit '}
         onClick={toggleForm} />
 
-    </>
+    </div>
   )
 
 }

@@ -1,4 +1,4 @@
-import { FinancialAssetType } from '../../types';
+import { FinancialAssetType, isBondAsset, isCashAsset, isStockAsset } from '../../types';
 import { Dispatch } from 'react';
 
 export interface FinancialAssetsState {
@@ -34,6 +34,33 @@ export async function doLoadData(dispatch: Dispatch<Actions>) {
 
   // now send it off to the reducer
   dispatch({type: 'LOAD_DATA', payload: flatResults});
+}
+
+export async function doSaveAsset(asset: FinancialAssetType, dispatch: Dispatch<Actions>) {
+  let assetType: string = '';
+  if (isStockAsset(asset)) {
+    assetType = 'stocks';
+  } else if (isCashAsset(asset)) {
+    assetType = 'cash';
+  } else if (isBondAsset(asset)) {
+    assetType = 'bonds';
+  } else {
+    throw new Error('Not a vaild asset type.');
+  }
+  const response = await fetch(`/api/${assetType}/${asset.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(asset)
+  });
+
+  if (!response?.ok) {
+    throw new Error(`doSaveAsset failed. ${response?.status} - ${response?.statusText}`);
+  }
+
+  // go ahead and update the state
+  dispatch({type: 'UPDATE_ASSET', payload: asset} );
 }
 
 export type Actions = LoadDataAction | UpdateAssetAction;

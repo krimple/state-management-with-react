@@ -2,14 +2,15 @@ import { CashAsset } from '../../../types';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer.ts';
 import Button from '../../../components/Button.tsx';
+import { doSaveAsset } from '../financial-assets-reducer.ts';
 
 interface EditCashFormProps {
   cash: CashAsset,
   onClose: () => void
 }
 
-export default function EditCashForm({cash, onClose}: EditCashFormProps) {
-  const [cashData, setCashData] = useState<CashAsset>(cash);
+export default function EditCashForm({cash: originalCashData, onClose}: EditCashFormProps) {
+  const [cashData, setCashData] = useState<CashAsset>(originalCashData);
   const {dispatch} = useFinancialAssetsContext();
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -34,10 +35,14 @@ export default function EditCashForm({cash, onClose}: EditCashFormProps) {
     }
   }
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    dispatch({type: 'UPDATE_ASSET', payload: cashData});
-    onClose();
+    try {
+      await doSaveAsset(cashData, dispatch);
+      onClose();
+    } catch (e) {
+      alert('Update failed. If I were a toast system you would like me. Check the logs in your browser and json-server');
+    }
   }
 
   return (
@@ -48,11 +53,11 @@ export default function EditCashForm({cash, onClose}: EditCashFormProps) {
       <input
         type="string"
         name="accountNumber"
-        defaultValue={cash.accountNumber}
+        defaultValue={cashData.accountNumber}
         onChange={handleChange}
       />
       <label htmlFor="accountType">
-        Basis
+        Account Type
       </label>
       <input
         type="string"

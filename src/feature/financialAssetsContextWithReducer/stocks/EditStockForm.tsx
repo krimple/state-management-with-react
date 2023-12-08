@@ -2,14 +2,15 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer.ts';
 import { StockAsset } from '../../../types';
 import Button from '../../../components/Button.tsx';
+import { doSaveAsset } from '../financial-assets-reducer.ts';
 
 interface EditStockFormProps {
   stock: StockAsset,
   onClose: () => void
 }
-export default function EditStockForm({stock, onClose}: EditStockFormProps) {
+export default function EditStockForm({stock: initialStockData, onClose}: EditStockFormProps) {
 
-  const [stockData, setStockData] = useState<StockAsset>(stock);
+  const [stockData, setStockData] = useState<StockAsset>(initialStockData);
   const {dispatch} = useFinancialAssetsContext();
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -24,6 +25,11 @@ export default function EditStockForm({stock, onClose}: EditStockFormProps) {
           return {...state, basisCost: Number.parseFloat(event.target.value)};
         });
         break;
+      case 'currentValue':
+        setStockData((state: StockAsset) => {
+          return {...state, currentValue: Number.parseFloat(event.target.value)};
+        });
+        break;
       case 'description':
         setStockData((state: StockAsset) => {
           return {...state, description: event.target.value};
@@ -33,10 +39,14 @@ export default function EditStockForm({stock, onClose}: EditStockFormProps) {
         return;
     }
   }
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    dispatch({type: 'UPDATE_ASSET', payload: stockData});
-    onClose();
+    try {
+      await doSaveAsset(stockData, dispatch);
+      onClose();
+    } catch(e) {
+      alert('Update failed. If I were a toast system you would like me. Check the logs in your browser and json-server');
+    }
   }
 
   return (
@@ -44,32 +54,44 @@ export default function EditStockForm({stock, onClose}: EditStockFormProps) {
       className="grid-form"
       onSubmit={handleSubmit}>
       <label htmlFor="ticker">Ticker</label>
-        <input
-          type="text"
-          name="ticker"
-          defaultValue={stockData.ticker}
-          onChange={handleChange}
-        />
-        <label htmlFor="basisCost">
-          Basis
-        </label>
-        <input
-          type="number"
-          min={0}
-          name="basisCost"
-          defaultValue={stockData.basisCost}
-          onChange={handleChange}
-        />
-        <label htmlFor="description">
-          Info
-        </label>
-        <input
-          type="text"
-          name="description"
-          defaultValue={stockData.description}
-          onChange={handleChange}
-        />
-      <Button label="Save" type="submit" />
+      <input
+        type="text"
+        name="ticker"
+        defaultValue={stockData.ticker}
+        onChange={handleChange}
+      />
+      <label htmlFor="basisCost">
+        Basis
+      </label>
+      <input
+        type="number"
+        min={0}
+        name="basisCost"
+        defaultValue={stockData.basisCost}
+        onChange={handleChange}
+      />
+      <label htmlFor="currentValue">
+        Current Value
+      </label>
+      <input
+        type="number"
+        min={0}
+        name="currentValue"
+        defaultValue={stockData.currentValue}
+        onChange={handleChange}
+      />
+      <label htmlFor="description">
+      Info
+    </label>
+      <input
+        type="text"
+        name="description"
+        defaultValue={stockData.description}
+        onChange={handleChange}
+      />
+      { /* Two-column grid, skip a column before button */}
+      <div>&nbsp;</div>
+      <Button label="Save" type="submit"/>
     </form>
   )
 }
