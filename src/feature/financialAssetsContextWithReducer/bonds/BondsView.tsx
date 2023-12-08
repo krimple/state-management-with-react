@@ -8,7 +8,6 @@ export default function BondsView() {
   const bondElements = bondAssets.map((bondAsset: BondAsset) => (<Bond key={bondAsset.id} bond={bondAsset}/>));
   return (
     <>
-      <h3>Bonds</h3>
       { bondElements }
     </>
   )

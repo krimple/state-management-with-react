@@ -1,17 +1,18 @@
 import './App.css'
-import FinancialAssetsContextWithReducer
-  from './feature/financialAssetsContextWithReducer/FinancialAssetsContextWithReducer';
-import FinancialAssetsContextDriven from './feature/financialAssetsContext/FinancialAssetsContextDriven.tsx';
-
+import { Outlet } from 'react-router';
 function App() {
   return (
-    <div className='w-auto rounded-panel'>
-      <h1>Demos</h1>
-      {/*<h2>FA Using Context</h2>*/}
-      {/*<FinancialAssetsContextDriven />*/}
-
-      <h2>FA Using Context+Reducer</h2>
-      <FinancialAssetsContextWithReducer />
+    <div>
+      <h1>React State Management Demos</h1>
+      <nav>
+        <ul className="px-4 flex flex-row text-blue-800 underline">
+          <li className="mr-4"><a href={'/context'}>Context Demo</a></li>
+          <li><a href={'/context-reducer'}>Context with Reducer Demo</a></li>
+        </ul>
+      </nav>
+      <section id="main">
+        <Outlet />
+      </section>
     </div>
   )
 }
