@@ -1,7 +1,7 @@
-import { BondAssetType } from '../../../types';
+import { BondAsset } from '../../../types';
 
 type BondProps = {
-  bond: BondAssetType
+  bond: BondAsset
 }
 export default function Bond({bond}: BondProps) {
 

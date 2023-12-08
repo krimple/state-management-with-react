@@ -1,19 +1,17 @@
 import StocksView from './stocks/StocksView';
 import BondsView from './bonds/BondsView';
 import CashView from './cash/CashView';
-import {FinancialAssetsContextProvider} from './useFinancialAssetsWithContext.ts';
+import {FinancialAssetsContextProvider} from './useFinancialAssetsWithContext';
 import { useEffect, useState } from 'react';
-import { FinancialAssetsState } from '../financialAssetsContextWithReducer/financial-assets-reducer.ts';
+import { FinancialAssetType } from '../../types';
+import { getAssets } from '../../apis';
+import Card from '../../components/Card.tsx';
 
 export default function FinancialAssetsContextDriven () {
-
-  const [assets, setAssets] = useState<FinancialAssetsState|null>(null);
+  const [assets, setAssets] = useState<FinancialAssetType[]|null>(null);
   useEffect(() => {
-    (async () => {
-      const response = await fetch('/api/assets');
-      if (response.ok) {
-        setAssets(await response.json() as FinancialAssetsState);
-      }
+    (async() => {
+      setAssets(await getAssets());
     })();
   }, []);
 
@@ -23,9 +21,9 @@ export default function FinancialAssetsContextDriven () {
   }
   return (
     <FinancialAssetsContextProvider value={assets}>
-    <StocksView />
-    <BondsView />
-    <CashView />
+      <Card title="Stocks"><StocksView /></Card>
+      <Card title="Bonds"><BondsView /></Card>
+      <Card title="Cash"><CashView /></Card>
   </FinancialAssetsContextProvider>
   );
 }

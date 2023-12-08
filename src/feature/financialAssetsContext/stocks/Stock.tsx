@@ -1,7 +1,7 @@
-import { StockAssetType } from '../../../types';
+import { StockAsset } from '../../../types';
 
 export interface StockProps {
-  stock: StockAssetType
+  stock: StockAsset
 }
 export default function Stock({stock}: StockProps) {
 
