@@ -13,7 +13,7 @@ import {
 describe('Financial Assets Context Reducer', () => {
 
   describe('should properly update the right item', () => {
-    let state: FinancialAssetsState = {
+    const state: FinancialAssetsState = {
       assets: [],
     };
 
@@ -29,7 +29,7 @@ describe('Financial Assets Context Reducer', () => {
           id: 2,
           accountNumber: 'aaa-dg-3dfdf-34e3',
           accountType: 'SAVINGS',
-          value: 200.2,
+          balance: 200.2,
         } as CashAsset,
         {
           id: 3,
@@ -90,13 +90,13 @@ describe('Financial Assets Context Reducer', () => {
           id: 2,
           accountNumber: '999999',
           accountType: 'CHECKING',
-          value: 10.40
+          balance: 10.40
         } as CashAsset
       });
       const updatedAsset = newState.assets.find(s => s.id === 2);
       expect(isCashAsset(updatedAsset)).toBeTruthy();
       const cashAsset= updatedAsset as CashAsset;
-      expect(cashAsset.value).toBe(10.40);
+      expect(cashAsset.balance).toBe(10.40);
       expect(cashAsset.accountType).toBe('CHECKING');
       expect(cashAsset.accountNumber).toBe('999999');
     });

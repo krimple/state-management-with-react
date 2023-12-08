@@ -3,12 +3,14 @@ import Cash from './Cash';
 import { CashAsset, isCashAsset } from '../../../types';
 
 export default function CashView() {
-  const assets = useFinancialAssetsContext().state.assets;
-  const cashAssets: CashAsset[] = assets.filter(a => isCashAsset(a)) as CashAsset[];
-  const cashElements = cashAssets.map(cashAsset => (<Cash key={cashAsset.id} cash={cashAsset} />));
+  const {assets} = useFinancialAssetsContext().state;
+  const cashElements = assets
+
+    .filter(a => isCashAsset(a))
+    .map(cashAsset =>
+      (<Cash key={cashAsset.id} cash={cashAsset as CashAsset } />));
   return (
     <>
-      <h3>Cash</h3>
       {cashElements}
     </>
   );

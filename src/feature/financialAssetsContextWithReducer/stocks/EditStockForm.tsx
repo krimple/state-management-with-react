@@ -1,31 +1,31 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer.ts';
-import { StockAssetType } from '../../../types';
+import { StockAsset } from '../../../types';
 import Button from '../../../components/Button.tsx';
 
 interface EditStockFormProps {
-  stock: StockAssetType,
+  stock: StockAsset,
   onClose: () => void
 }
 export default function EditStockForm({stock, onClose}: EditStockFormProps) {
 
-  const [stockData, setStockData] = useState<StockAssetType>(stock);
+  const [stockData, setStockData] = useState<StockAsset>(stock);
   const {dispatch} = useFinancialAssetsContext();
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     switch (event.target.name) {
       case 'ticker':
-        setStockData((state: StockAssetType) => {
+        setStockData((state: StockAsset) => {
           return {...state, ticker: event.target.value};
         });
         break;
       case 'basisCost':
-        setStockData((state: StockAssetType) => {
+        setStockData((state: StockAsset) => {
           return {...state, basisCost: Number.parseFloat(event.target.value)};
         });
         break;
       case 'description':
-        setStockData((state: StockAssetType) => {
+        setStockData((state: StockAsset) => {
           return {...state, description: event.target.value};
         });
         break;
@@ -41,9 +41,7 @@ export default function EditStockForm({stock, onClose}: EditStockFormProps) {
 
   return (
     <form
-      className="bg-white p-4
-                 border border-gray-200 rounded-3xl
-                 grid grid-cols-2"
+      className="grid-form"
       onSubmit={handleSubmit}>
       <label htmlFor="ticker">Ticker</label>
         <input

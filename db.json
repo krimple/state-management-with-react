@@ -4,7 +4,7 @@
       "id": 1,
       "accountNumber": "23424234-23423-5334",
       "accountType": "SAVINGS",
-      "value": 505.34
+      "balance": 505.34
     }
   ],
   "stocks": [

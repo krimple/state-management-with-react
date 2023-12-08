@@ -25,7 +25,7 @@ export async function doLoadData(dispatch: Dispatch<Actions>) {
   if (responses.find(r => !r.ok)) {
     throw new Error('Failed response. Check logs.');
   }
-  const jsonResults = await Promise.all<any>([
+  const jsonResults = await Promise.all<[any, any, any]>([
     responses[0].json(),
     responses[1].json(),
     responses[2].json(),

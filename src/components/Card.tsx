@@ -18,4 +18,4 @@ export default function Card({children, title, header, footer}: CardProps) {
       { footer && <div className="p-0 my-2 bg-white-50">{footer}</div> }
     </div>
   );
-};
+}

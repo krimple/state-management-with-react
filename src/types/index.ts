@@ -3,7 +3,7 @@ export interface StockAsset {
   ticker: string,
   basisCost: number,
   description: string
-};
+}
 
 export function isStockAsset(object: any): object is StockAsset {
   return 'ticker' in object && 'basisCost' in object && 'description' in object;
@@ -30,13 +30,13 @@ export interface CashAsset {
   id: number,
   accountType: string,
   accountNumber: string,
-  value: number,
+  balance: number,
 }
 
 export function isCashAsset(object: any): object is CashAsset {
   return 'accountType' in object &&
     'accountNumber' in object &&
-    'value' in object;
+    'balance' in object;
 }
 
 export type FinancialAssetType = StockAsset|BondAsset|CashAsset;

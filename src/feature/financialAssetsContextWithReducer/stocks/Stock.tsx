@@ -1,14 +1,13 @@
-import { StockAssetType } from '../../../types';
+import { StockAsset } from '../../../types';
 import { useState } from 'react';
 import Button from '../../../components/Button.tsx';
 import EditStockForm from './EditStockForm.tsx';
 
 export interface StockProps {
-  stock: StockAssetType
+  stock: StockAsset
 }
+
 export default function Stock({stock}: StockProps) {
-
-
   const [editing, setEditing] = useState(false);
 
   function toggleForm() {
@@ -16,10 +15,15 @@ export default function Stock({stock}: StockProps) {
   }
 
 
+  // TODO format better
   return (
     <>
      { !editing &&
-          <div>Ticker: {stock.ticker} - Basis: {stock.basisCost}, Info {stock.description} </div>
+          <div>
+              Ticker: {stock.ticker} -
+              Basis: {stock.basisCost} -
+              Info: {stock.description}
+          </div>
       }
       { editing &&
         <EditStockForm stock={stock} onClose={() => setEditing(false)} /> }
