@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { createBrowserRouter } from 'react-router-dom';
-import FinancialAssetsContextDriven from './feature/financialAssetsContext/FinancialAssetsContextDriven.tsx';
+import FinancialAssetsContextDriven from './demos/financialAssetsContext/FinancialAssetsContextDriven.tsx';
 import FinancialAssetsContextWithReducer
-  from './feature/financialAssetsContextWithReducer/FinancialAssetsContextWithReducer.tsx';
+  from './demos/financialAssetsContextWithReducer/FinancialAssetsContextWithReducer.tsx';
 import { RouterProvider } from 'react-router';
+import FinancialAssetsWithRedux from './demos/financialAssetsRedux/FinancialAssetsWithRedux.tsx';
 
 const router = createBrowserRouter([
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: 'context-reducer',
         element: <FinancialAssetsContextWithReducer />
+      },
+      {
+        path: 'redux',
+        element: <FinancialAssetsWithRedux />
       }
     ]
   }

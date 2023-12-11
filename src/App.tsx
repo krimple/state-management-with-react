@@ -7,7 +7,8 @@ function App() {
       <nav>
         <ul className="px-4 flex flex-row text-blue-800 underline">
           <li className="mr-4"><a href={'/context'}>Context Demo</a></li>
-          <li><a href={'/context-reducer'}>Context with Reducer Demo</a></li>
+          <li className="mr-4"><a href={'/context-reducer'}>Context with Reducer Demo</a></li>
+          <li className="mr-4"><a href={'/redux'}>Redux Demo</a></li>
         </ul>
       </nav>
       <section id="main">
