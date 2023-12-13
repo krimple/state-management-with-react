@@ -9,6 +9,7 @@ import FinancialAssetsContextWithReducer
 import { RouterProvider } from 'react-router';
 import FinancialAssetsWithRedux from './demos/financialAssetsRedux/FinancialAssetsWithRedux.tsx';
 import FinancialAssetsWithReactQuery from './demos/reactQuery/FinancialAssetsWithReactQuery.tsx';
+import FinancialAssetsLocalState from './demos/financialAssetsLocalState/FinancialAssetsLocalState.tsx';
 
 const router = createBrowserRouter([
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
+      {
+        path: 'local-state',
+        element: <FinancialAssetsLocalState />
+      },
       {
         path: 'context',
         element: <FinancialAssetsContextDriven />
