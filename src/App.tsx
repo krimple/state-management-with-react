@@ -9,10 +9,11 @@ function App() {
           <li className="mr-4"><a href={'/context'}>Context Demo</a></li>
           <li className="mr-4"><a href={'/context-reducer'}>Context with Reducer Demo</a></li>
           <li className="mr-4"><a href={'/redux'}>Redux Demo</a></li>
+          <li className="mr-4"><a href={'/react-query'}>React Query Demo</a></li>
         </ul>
       </nav>
       <section id="main">
-        <Outlet />
+        <Outlet/>
       </section>
     </div>
   )

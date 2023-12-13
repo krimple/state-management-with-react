@@ -8,6 +8,7 @@ import FinancialAssetsContextWithReducer
   from './demos/financialAssetsContextWithReducer/FinancialAssetsContextWithReducer.tsx';
 import { RouterProvider } from 'react-router';
 import FinancialAssetsWithRedux from './demos/financialAssetsRedux/FinancialAssetsWithRedux.tsx';
+import FinancialAssetsWithReactQuery from './demos/reactQuery/FinancialAssetsWithReactQuery.tsx';
 
 const router = createBrowserRouter([
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'redux',
         element: <FinancialAssetsWithRedux />
+      },
+      {
+        path: 'react-query',
+        element: <FinancialAssetsWithReactQuery />
       }
     ]
   }
