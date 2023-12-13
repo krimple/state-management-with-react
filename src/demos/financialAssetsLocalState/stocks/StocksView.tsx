@@ -1,20 +1,28 @@
 import Stock from './Stock';
 import { StockAsset } from '../../../types';
-import { getStocks } from '../../../apis/get-assets.ts';
 import { useEffect, useState } from 'react';
+import { getStocks } from '../../../apis/get-assets.ts';
 
-export default function StocksView() {
+export default function StockView() {
 
   const [stocks, setStocks] = useState<StockAsset[]>([]);
+
   useEffect(() => {
-    (async () => {
-      setStocks(await getStocks());
+    (async() => {
+      await loadData();
     })();
   }, []);
-  const stockElements = stocks.map((stock) => (<Stock key={stock.id} stock={stock}/>));
+
+  async function loadData() {
+    setStocks(await getStocks());
+  }
+
+  const stockElements = stocks.map(stockEntry =>
+    <Stock key={stockEntry.id} stock={stockEntry} onUpdated={loadData} />);
+
   return (
     <>
-      { stockElements }
+      {stockElements}
     </>
-    )
+  );
 }

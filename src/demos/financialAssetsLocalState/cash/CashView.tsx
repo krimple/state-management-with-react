@@ -7,10 +7,17 @@ export default function CashView() {
   const [cash, setCash] = useState<CashAsset[]>([]);
   useEffect(() => {
     (async() => {
-      setCash(await getCash());
+      await loadData();
     })();
   }, []);
-  const cashElements = cash.map(cashEntry => <Cash key={cashEntry.id} cash={cashEntry} />);
+
+  async function loadData() {
+     setCash(await getCash());
+  }
+
+  const cashElements = cash.map(cashEntry =>
+    <Cash key={cashEntry.id} cash={cashEntry} onUpdated={loadData} />);
+
   return (
     <>
       {cashElements}
