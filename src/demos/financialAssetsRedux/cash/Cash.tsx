@@ -30,10 +30,10 @@ export default function Cash({cash}: CashProps) {
       }
       { editing &&
           <EditCashForm cash={cash} onClose={() => setEditing(false)} /> }
-            <Button
-            type="button"
-            label={ editing ? 'Close' : 'Edit'}
-                        onClick={toggleForm} />
-        </>
-        )
-      }
+      <Button
+        type="button"
+        label={ editing ? 'Close' : 'Edit'}
+        onClick={toggleForm} />
+    </>
+  )
+}
