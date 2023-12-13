@@ -1,15 +1,16 @@
 import './App.css'
 import { Outlet } from 'react-router';
+import { NavLink } from 'react-router-dom';
 function App() {
   return (
     <div>
       <h1>React State Management Demos</h1>
       <nav>
         <ul className="px-4 flex flex-row text-blue-800 underline">
-          <li className="mr-4"><a href={'/context'}>Context Demo</a></li>
-          <li className="mr-4"><a href={'/context-reducer'}>Context with Reducer Demo</a></li>
-          <li className="mr-4"><a href={'/redux'}>Redux Demo</a></li>
-          <li className="mr-4"><a href={'/react-query'}>React Query Demo</a></li>
+          <li className="mr-4"><NavLink to={'/context'}>Context Demo</NavLink></li>
+          <li className="mr-4"><NavLink to={'/context-reducer'}>Context with Reducer Demo</NavLink></li>
+          <li className="mr-4"><NavLink to={'/redux'}>Redux Demo</NavLink></li>
+          <li className="mr-4"><NavLink to={'/react-query'}>React Query Demo</NavLink></li>
         </ul>
       </nav>
       <section id="main">

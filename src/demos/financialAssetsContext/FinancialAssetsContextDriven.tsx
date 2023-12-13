@@ -2,7 +2,7 @@ import StocksView from './stocks/StocksView';
 import BondsView from './bonds/BondsView';
 import CashView from './cash/CashView';
 import {FinancialAssetsContextProvider} from './useFinancialAssetsWithContext';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { FinancialAssetType } from '../../types';
 import { getAssets } from '../../apis';
 import Card from '../../components/Card.tsx';
@@ -20,10 +20,13 @@ export default function FinancialAssetsContextDriven () {
     return <p>Loading...</p>
   }
   return (
-    <FinancialAssetsContextProvider value={assets}>
-      <Card title="Stocks"><StocksView /></Card>
-      <Card title="Bonds"><BondsView /></Card>
-      <Card title="Cash"><CashView /></Card>
-  </FinancialAssetsContextProvider>
+    <Suspense fallback={<p>Loading context demo...</p>}>
+      <FinancialAssetsContextProvider value={assets}>
+        <h3>Using React Context</h3>
+        <Card title="Stocks"><StocksView /></Card>
+        <Card title="Bonds"><BondsView /></Card>
+        <Card title="Cash"><CashView /></Card>
+      </FinancialAssetsContextProvider>
+    </Suspense>
   );
 }

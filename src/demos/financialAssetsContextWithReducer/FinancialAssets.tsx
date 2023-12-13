@@ -11,7 +11,9 @@ import Card from '../../components/Card.tsx';
 export default function FinancialAssets() {
   const { dispatch} = useFinancialAssetsContext();
 
-  // TODO - extract out of component into action creator ala Redux
+  // NOTE: though we've included the Suspense component in the outer component,
+  // it will not work, because useEffect isn't detected as a datasource.
+  // https://react.dev/reference/react/Suspense#displaying-a-fallback-while-content-is-loading
   useEffect(() => {
     (async () => {
       await doLoadData(dispatch);
@@ -20,9 +22,10 @@ export default function FinancialAssets() {
 
   return (
     <>
+      <h3>Using Context + React Reducer</h3>
       <Card title="Stocks"><StocksView /></Card>
       <Card title="Bonds"><BondsView /></Card>
       <Card title="Cash"><CashView /></Card>
     </>
-  )
+  );
 }
