@@ -23,3 +23,4 @@ This is a work in progress.
 * Extensive editing with React context - context with reducer was a better choice to show editing
 * Use plain Redux - since Redux is now deprecating `createStore` from the redux package and strongly urging to switch to `@reduxjs/toolkit` instead, we only use Redux Toolkit
 * Form validation - not the focus of this lab so no form validation is supplied. Recommend looking into `react-form-hook` and `yup` as options for this
+* Anything with server-side React - though we could do a similar repo in the future around next.js or other server-side engines and their approaches
