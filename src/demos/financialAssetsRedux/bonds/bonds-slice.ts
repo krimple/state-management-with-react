@@ -14,7 +14,7 @@ export const updateBond = createAsyncThunk(
   async (bond: BondAsset, thunkAPI) => {
     const updateResponse = await fetch(`/api/bonds/${bond.id}`, {
       headers: {
-        "Content-Type": "application/json`",
+        "Content-Type": "application/json",
       },
       method: "PUT",
       body: JSON.stringify(bond),
@@ -41,7 +41,7 @@ export const bondsReducer = createReducer<BondAsset[]>([], (builder) => {
   builder.addCase(fetchBonds.fulfilled, (_, action) => {
     return action.payload;
   });
-  builder.addCase(fetchBonds.rejected, (_) => {
+  builder.addCase(fetchBonds.rejected, () => {
     return [];
   });
   builder.addCase(updateBond.fulfilled, (_, action) => {

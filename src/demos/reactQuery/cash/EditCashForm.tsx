@@ -13,6 +13,7 @@ export default function EditCashForm({
   cash: originalCashData,
   onClose,
 }: EditCashFormProps) {
+  const [cashState, setFormState] = useState(originalCashData);
   const client = useQueryClient();
   const { mutate, isError, error, isSuccess, isPending } = useMutation({
     mutationFn: (updatedCash: CashAsset) => {
@@ -38,8 +39,6 @@ export default function EditCashForm({
   if (isSuccess) {
     return <p>Update successful.</p>;
   }
-
-  const [cashState, setFormState] = useState(originalCashData);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: CashAsset) => {

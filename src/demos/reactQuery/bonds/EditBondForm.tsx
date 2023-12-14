@@ -13,6 +13,8 @@ export default function EditBondForm({
   bond: originalBondData,
   onClose,
 }: EditBondFormProps) {
+  const [bondState, setFormState] = useState(originalBondData);
+
   const client = useQueryClient();
   const { mutate, isError, error, isSuccess, isPending } = useMutation({
     mutationFn: (updatedBond: BondAsset) => {
@@ -38,8 +40,6 @@ export default function EditBondForm({
   if (isSuccess) {
     return <p>Update successful.</p>;
   }
-
-  const [bondState, setFormState] = useState(originalBondData);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: BondAsset) => {

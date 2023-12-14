@@ -6,15 +6,15 @@
  * @return {Promise<object>} - A promise that resolves to the fetched JSON data.
  * @throws {Error} - If the network response is not OK, an error is thrown with the corresponding response status and status text.
  */
-export async function fetchJsonThrowingErrors<E extends Object>(
+export async function fetchJsonThrowingErrors<T extends unknown>(
   endpoint: string,
   settings?: any,
-): Promise<object> {
+): Promise<T> {
   const response = await fetch(endpoint, { ...(settings || {}) });
   if (!response.ok) {
     throw new Error(
       `Network response problem - ${response.status} - ${response.statusText})`,
     );
   }
-  return (await response.json()) as E;
+  return (await response.json()) as T;
 }

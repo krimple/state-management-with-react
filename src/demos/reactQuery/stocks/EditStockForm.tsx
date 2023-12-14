@@ -13,6 +13,8 @@ export default function EditStockForm({
   stock: originalStockData,
   onClose,
 }: EditStockFormProps) {
+  const [stockState, setFormState] = useState(originalStockData);
+
   const client = useQueryClient();
   const { mutate, isError, error, isSuccess, isPending } = useMutation({
     mutationFn: (updatedStock: StockAsset) => {
@@ -38,8 +40,6 @@ export default function EditStockForm({
   if (isSuccess) {
     return <p>Update successful.</p>;
   }
-
-  const [stockState, setFormState] = useState(originalStockData);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: StockAsset) => {

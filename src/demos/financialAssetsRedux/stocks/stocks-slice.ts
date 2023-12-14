@@ -14,7 +14,7 @@ export const updateStock = createAsyncThunk(
   async (stockAsset: StockAsset, thunkAPI) => {
     const updateResponse = await fetch(`/api/stocks/${stockAsset.id}`, {
       headers: {
-        "Content-Type": "application/json`",
+        "Content-Type": "application/json",
       },
       method: "PUT",
       body: JSON.stringify(stockAsset),

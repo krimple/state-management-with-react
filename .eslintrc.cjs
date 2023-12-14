@@ -9,7 +9,7 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'eslint-plugin-import'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
@@ -17,6 +17,8 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-unused-vars': 'off',      // sometimes you need a second parameter and have to skip the 1st one
+    '@typescript-eslint/no-explicit-any': 'off',
+    'import/extensions': ["error", "never",{ "jpg": "always", "ico": "always", "png" : "always", "css": "always" }]
   },
 }
