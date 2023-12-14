@@ -1,27 +1,34 @@
-import { FinancialAssetType, isBondAsset, isCashAsset, isStockAsset } from '../types';
+import {
+  FinancialAssetType,
+  isBondAsset,
+  isCashAsset,
+  isStockAsset,
+} from "../types";
 
 export async function saveAsset(asset: FinancialAssetType) {
-  let apiEndpointType = '';
+  let apiEndpointType = "";
   if (isBondAsset(asset)) {
-    apiEndpointType = 'bonds';
+    apiEndpointType = "bonds";
   } else if (isCashAsset(asset)) {
-    apiEndpointType = 'cash';
+    apiEndpointType = "cash";
   } else if (isStockAsset(asset)) {
-    apiEndpointType = 'stocks';
+    apiEndpointType = "stocks";
   } else {
-    throw new Error('Invalid endpoint type');
+    throw new Error("Invalid endpoint type");
   }
 
   const response = await fetch(`/api/${apiEndpointType}/${asset.id}`, {
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(asset),
-    method: 'PUT'
+    method: "PUT",
   });
   if (response.ok) {
     return true;
   } else {
-    throw new Error(`Networking error - ${response.status} = ${response.statusText}`);
+    throw new Error(
+      `Networking error - ${response.status} = ${response.statusText}`,
+    );
   }
 }

@@ -1,1 +1,1 @@
-export {getAssets} from './get-assets.ts';
+export { getAssets } from "./get-assets.ts";

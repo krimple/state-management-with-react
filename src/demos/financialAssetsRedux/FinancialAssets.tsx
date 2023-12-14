@@ -1,16 +1,15 @@
 // import CashView from './cash/CashView';
-import StocksView from './stocks/StocksView';
-import BondsView from './bonds/BondsView';
-import Card from '../../components/Card.tsx';
-import CashView from './cash/CashView.tsx';
-import { Suspense, useEffect } from 'react';
-import { fetchCash } from './cash/cash-slice.ts';
-import { fetchBonds } from './bonds/bonds-slice.ts';
-import { fetchStocks } from './stocks/stocks-slice.ts';
-import { useAppDispatch } from './store/hooks.ts';
+import StocksView from "./stocks/StocksView";
+import BondsView from "./bonds/BondsView";
+import Card from "../../components/Card.tsx";
+import CashView from "./cash/CashView.tsx";
+import { Suspense, useEffect } from "react";
+import { fetchCash } from "./cash/cash-slice.ts";
+import { fetchBonds } from "./bonds/bonds-slice.ts";
+import { fetchStocks } from "./stocks/stocks-slice.ts";
+import { useAppDispatch } from "./store/hooks.ts";
 
 export default function FinancialAssets() {
-
   const dispatch = useAppDispatch();
   useEffect(() => {
     // trip load of all reducer data
@@ -22,9 +21,15 @@ export default function FinancialAssets() {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <h3>Using Redux with Redux Toolkit</h3>
-      <Card title="Stocks"><StocksView /></Card>
-      <Card title="Bonds"><BondsView /></Card>
-      <Card title="Cash"><CashView /></Card>
+      <Card title="Stocks">
+        <StocksView />
+      </Card>
+      <Card title="Bonds">
+        <BondsView />
+      </Card>
+      <Card title="Cash">
+        <CashView />
+      </Card>
     </Suspense>
-  )
+  );
 }

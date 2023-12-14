@@ -10,3 +10,10 @@ This is a small demo repository that exercises state management via several appr
 
 This is a work in progress.
 
+## Technologies applied
+
+* `Vite` - de-facto build system replacing "Create React App"
+* `TypeScript` - all code written in TypeScript
+* `Tailwind.css` - utility-driven css design system, added it and used it with components and pre-defined styles in `index.css` to set sensible defaults
+* `vitest` exercises code in several places using TypeScript-driven unit tests
+* 

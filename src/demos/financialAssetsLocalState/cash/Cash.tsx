@@ -1,15 +1,14 @@
-import { CashAsset } from '../../../types';
-import { useState } from 'react';
-import Button from '../../../components/Button';
-import EditCashForm from './EditCashForm.tsx';
-
+import { CashAsset } from "../../../types";
+import { useState } from "react";
+import Button from "../../../components/Button";
+import EditCashForm from "./EditCashForm.tsx";
 
 export interface CashProps {
-  cash: CashAsset,
-  onUpdated: () => void
+  cash: CashAsset;
+  onUpdated: () => void;
 }
 
-export default function Cash({cash, onUpdated}: CashProps) {
+export default function Cash({ cash, onUpdated }: CashProps) {
   const [editing, setEditing] = useState(false);
 
   function handleSaveCompleted() {
@@ -23,23 +22,24 @@ export default function Cash({cash, onUpdated}: CashProps) {
   }
 
   if (!cash) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
   return (
     <>
-      {!editing &&
-          <section>
-              Cash in {cash.accountNumber && ''.concat('XXXXXX', cash.accountNumber.substring(-1, 5))} -
-              Value: {cash.balance} -
-              Type: {cash.accountType}
-          </section>
-      }
-      { editing &&
-          <EditCashForm cash={cash} onClose={handleSaveCompleted} /> }
+      {!editing && (
+        <section>
+          Cash in{" "}
+          {cash.accountNumber &&
+            "".concat("XXXXXX", cash.accountNumber.substring(-1, 5))}{" "}
+          - Value: {cash.balance} - Type: {cash.accountType}
+        </section>
+      )}
+      {editing && <EditCashForm cash={cash} onClose={handleSaveCompleted} />}
       <Button
         type="button"
-        label={ editing ? 'Close' : 'Edit'}
-        onClick={toggleForm} />
+        label={editing ? "Close" : "Edit"}
+        onClick={toggleForm}
+      />
     </>
-  )
+  );
 }

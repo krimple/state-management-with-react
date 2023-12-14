@@ -1,37 +1,36 @@
-import { BondAsset } from '../../../types';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import Button from '../../../components/Button.tsx';
-import { updateBond } from './bonds-slice.ts';
-import { useAppDispatch } from '../store/hooks.ts';
+import { BondAsset } from "../../../types";
+import { ChangeEvent, FormEvent, useState } from "react";
+import Button from "../../../components/Button.tsx";
+import { updateBond } from "./bonds-slice.ts";
+import { useAppDispatch } from "../store/hooks.ts";
 
 interface EditBondFormProps {
-  bond: BondAsset,
-  onClose: () => void
+  bond: BondAsset;
+  onClose: () => void;
 }
 
-
-export default function EditBondForm({bond: originalBondData, onClose}: EditBondFormProps) {
-
+export default function EditBondForm({
+  bond: originalBondData,
+  onClose,
+}: EditBondFormProps) {
   const dispatch = useAppDispatch();
 
   const [bondState, setFormState] = useState(originalBondData);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: BondAsset) => {
-      return {...formState, [event.target.name]: event.target.value};
+      return { ...formState, [event.target.name]: event.target.value };
     });
   }
 
   function handleSubmit(event: FormEvent) {
-      event.preventDefault();
-      dispatch(updateBond(bondState));
-      onClose();
+    event.preventDefault();
+    dispatch(updateBond(bondState));
+    onClose();
   }
 
   return (
-    <form
-      className="grid-form"
-      onSubmit={handleSubmit}>
+    <form className="grid-form" onSubmit={handleSubmit}>
       <label htmlFor="issuingAgency">Issuing Agency</label>
       <input
         type="text"
@@ -73,5 +72,5 @@ export default function EditBondForm({bond: originalBondData, onClose}: EditBond
       />
       <Button label="Save" type="submit" />
     </form>
-  )
+  );
 }

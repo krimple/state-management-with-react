@@ -1,43 +1,54 @@
-import { BondAsset } from '../../../types';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer.ts';
-import Button from '../../../components/Button.tsx';
-import { doSaveAsset } from '../financial-assets-reducer.ts';
+import { BondAsset } from "../../../types";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer.ts";
+import Button from "../../../components/Button.tsx";
+import { doSaveAsset } from "../financial-assets-reducer.ts";
 
 interface EditBondFormProps {
-  bond: BondAsset,
-  onClose: () => void
+  bond: BondAsset;
+  onClose: () => void;
 }
-export default function EditBondForm({bond: originalBondData, onClose}: EditBondFormProps) {
-
+export default function EditBondForm({
+  bond: originalBondData,
+  onClose,
+}: EditBondFormProps) {
   const [bondData, setBondData] = useState<BondAsset>(originalBondData);
-  const {dispatch} = useFinancialAssetsContext();
+  const { dispatch } = useFinancialAssetsContext();
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     switch (event.target.name) {
-      case 'issuingAgency':
+      case "issuingAgency":
         setBondData((state: BondAsset) => {
-          return {...state, issuingAgency: event.target.value};
+          return { ...state, issuingAgency: event.target.value };
         });
         break;
-      case 'bondSeries':
+      case "bondSeries":
         setBondData((state: BondAsset) => {
-          return {...state, bondSeries: event.target.value};
+          return { ...state, bondSeries: event.target.value };
         });
         break;
-      case 'initialValue':
+      case "initialValue":
         setBondData((state: BondAsset) => {
-          return {...state, initialValue: Number.parseFloat(event.target.value)};
+          return {
+            ...state,
+            initialValue: Number.parseFloat(event.target.value),
+          };
         });
         break;
-      case 'targetValue':
+      case "targetValue":
         setBondData((state: BondAsset) => {
-          return {...state, targetValue: Number.parseFloat(event.target.value)};
+          return {
+            ...state,
+            targetValue: Number.parseFloat(event.target.value),
+          };
         });
         break;
-      case 'maturityInMonths':
+      case "maturityInMonths":
         setBondData((state: BondAsset) => {
-          return {...state, maturityInMonths: Number.parseInt(event.target.value)};
+          return {
+            ...state,
+            maturityInMonths: Number.parseInt(event.target.value),
+          };
         });
         break;
       default:
@@ -50,14 +61,14 @@ export default function EditBondForm({bond: originalBondData, onClose}: EditBond
       await doSaveAsset(bondData, dispatch);
       onClose();
     } catch (e) {
-      alert('Update failed. If I were a toast system you would like me. Check the logs in your browser and json-server');
+      alert(
+        "Update failed. If I were a toast system you would like me. Check the logs in your browser and json-server",
+      );
     }
   }
 
   return (
-    <form
-      className="grid-form"
-      onSubmit={handleSubmit}>
+    <form className="grid-form" onSubmit={handleSubmit}>
       <label htmlFor="issuingAgency">Issuing Agency</label>
       <input
         type="text"
@@ -99,5 +110,5 @@ export default function EditBondForm({bond: originalBondData, onClose}: EditBond
       />
       <Button label="Save" type="submit" />
     </form>
-  )
+  );
 }

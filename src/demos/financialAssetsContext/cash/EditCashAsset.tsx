@@ -1,3 +1,1 @@
-export default function EditCashAsset() {
-
-}
+export default function EditCashAsset() {}
