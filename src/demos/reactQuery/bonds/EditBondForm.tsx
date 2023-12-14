@@ -1,28 +1,32 @@
-import { BondAsset } from '../../../types';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import Button from '../../../components/Button.tsx';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchJsonThrowingErrors } from '../utils/fetch-utils.ts';
+import { BondAsset } from "../../../types";
+import { ChangeEvent, FormEvent, useState } from "react";
+import Button from "../../../components/Button";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { fetchJsonThrowingErrors } from "../utils/fetch-utils";
 
 interface EditBondFormProps {
-  bond: BondAsset,
-  onClose: () => void
+  bond: BondAsset;
+  onClose: () => void;
 }
 
-export default function EditBondForm({bond: originalBondData, onClose}: EditBondFormProps) {
+export default function EditBondForm({
+  bond: originalBondData,
+  onClose,
+}: EditBondFormProps) {
+  const [bondState, setFormState] = useState(originalBondData);
 
   const client = useQueryClient();
-  const {mutate, isError, error, isSuccess, isPending} = useMutation({
-      mutationFn: (updatedBond: BondAsset) => {
-        return fetchJsonThrowingErrors(`/api/bonds/${updatedBond.id}`, {
-          method: 'PUT',
-          body: JSON.stringify(updatedBond),
-          headers: { 'Content-Type': 'application/json'}}
-        );
-     },
-     onSuccess: () => {
-        return client.invalidateQueries({ queryKey: ['bonds'] });
-     }
+  const { mutate, isError, error, isSuccess, isPending } = useMutation({
+    mutationFn: (updatedBond: BondAsset) => {
+      return fetchJsonThrowingErrors(`/api/bonds/${updatedBond.id}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedBond),
+        headers: { "Content-Type": "application/json" },
+      });
+    },
+    onSuccess: () => {
+      return client.invalidateQueries({ queryKey: ["bonds"] });
+    },
   });
 
   if (isError) {
@@ -37,24 +41,20 @@ export default function EditBondForm({bond: originalBondData, onClose}: EditBond
     return <p>Update successful.</p>;
   }
 
-  const [bondState, setFormState] = useState(originalBondData);
-
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: BondAsset) => {
-      return {...formState, [event.target.name]: event.target.value};
+      return { ...formState, [event.target.name]: event.target.value };
     });
   }
 
   function handleSubmit(event: FormEvent) {
-      event.preventDefault();
-      mutate(bondState);
-      onClose();
+    event.preventDefault();
+    mutate(bondState);
+    onClose();
   }
 
   return (
-    <form
-      className="grid-form"
-      onSubmit={handleSubmit}>
+    <form className="grid-form" onSubmit={handleSubmit}>
       <label htmlFor="issuingAgency">Issuing Agency</label>
       <input
         type="text"
@@ -96,5 +96,5 @@ export default function EditBondForm({bond: originalBondData, onClose}: EditBond
       />
       <Button label="Save" type="submit" />
     </form>
-  )
+  );
 }

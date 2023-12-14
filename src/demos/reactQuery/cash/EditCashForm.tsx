@@ -1,28 +1,31 @@
-import { CashAsset } from '../../../types';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import Button from '../../../components/Button.tsx';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchJsonThrowingErrors } from '../utils/fetch-utils.ts';
+import { CashAsset } from "../../../types";
+import { ChangeEvent, FormEvent, useState } from "react";
+import Button from "../../../components/Button";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { fetchJsonThrowingErrors } from "../utils/fetch-utils";
 
 interface EditCashFormProps {
-  cash: CashAsset,
-  onClose: () => void
+  cash: CashAsset;
+  onClose: () => void;
 }
 
-export default function EditCashForm({cash: originalCashData, onClose}: EditCashFormProps) {
-
+export default function EditCashForm({
+  cash: originalCashData,
+  onClose,
+}: EditCashFormProps) {
+  const [cashState, setFormState] = useState(originalCashData);
   const client = useQueryClient();
-  const {mutate, isError, error, isSuccess, isPending} = useMutation({
+  const { mutate, isError, error, isSuccess, isPending } = useMutation({
     mutationFn: (updatedCash: CashAsset) => {
       return fetchJsonThrowingErrors(`/api/cash/${updatedCash.id}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify(updatedCash),
-        headers: { 'Content-Type': 'application/json'}}
-      );
+        headers: { "Content-Type": "application/json" },
+      });
     },
     onSuccess: () => {
-      return client.invalidateQueries({ queryKey: ['cash'] });
-    }
+      return client.invalidateQueries({ queryKey: ["cash"] });
+    },
   });
 
   if (isError) {
@@ -37,11 +40,9 @@ export default function EditCashForm({cash: originalCashData, onClose}: EditCash
     return <p>Update successful.</p>;
   }
 
-  const [cashState, setFormState] = useState(originalCashData);
-
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: CashAsset) => {
-      return {...formState, [event.target.name]: event.target.value};
+      return { ...formState, [event.target.name]: event.target.value };
     });
   }
 
@@ -52,9 +53,7 @@ export default function EditCashForm({cash: originalCashData, onClose}: EditCash
   }
 
   return (
-    <form
-      className="grid-form"
-      onSubmit={handleSubmit}>
+    <form className="grid-form" onSubmit={handleSubmit}>
       <label htmlFor="balance">Balance</label>
       <input
         type="number"
@@ -79,5 +78,5 @@ export default function EditCashForm({cash: originalCashData, onClose}: EditCash
       />
       <Button label="Save" type="submit" />
     </form>
-  )
+  );
 }

@@ -1,20 +1,22 @@
-import { BondAsset } from '../../../types';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import Button from '../../../components/Button.tsx';
-import { saveAsset } from '../../../apis/save-asset.ts';
+import { BondAsset } from "../../../types";
+import { ChangeEvent, FormEvent, useState } from "react";
+import Button from "../../../components/Button";
+import { saveAsset } from "../../../apis/save-asset";
 
 interface EditBondFormProps {
-  bond: BondAsset,
-  onClose: () => void
+  bond: BondAsset;
+  onClose: () => void;
 }
 
-export default function EditBondForm({bond: originalBondData, onClose}: EditBondFormProps) {
-
+export default function EditBondForm({
+  bond: originalBondData,
+  onClose,
+}: EditBondFormProps) {
   const [bondState, setFormState] = useState<BondAsset>(originalBondData);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: BondAsset) => {
-      return {...formState, [event.target.name]: event.target.value};
+      return { ...formState, [event.target.name]: event.target.value };
     });
   }
 
@@ -23,16 +25,14 @@ export default function EditBondForm({bond: originalBondData, onClose}: EditBond
     try {
       await saveAsset(bondState);
     } catch (e) {
-      alert('Save failed. Check log.');
+      alert("Save failed. Check log.");
       console.error(e);
     }
     onClose();
   }
 
   return (
-    <form
-      className="grid-form"
-      onSubmit={handleSubmit}>
+    <form className="grid-form" onSubmit={handleSubmit}>
       <label htmlFor="bondSeries">Bond Series</label>
       <input
         type="string"
@@ -40,43 +40,35 @@ export default function EditBondForm({bond: originalBondData, onClose}: EditBond
         defaultValue={bondState.bondSeries}
         onChange={handleChange}
       />
-      <label htmlFor="issuingAgency">
-        Issuing Agency
-      </label>
+      <label htmlFor="issuingAgency">Issuing Agency</label>
       <input
         type="string"
         name="issuingAgency"
         defaultValue={bondState.issuingAgency}
         onChange={handleChange}
       />
-      <label htmlFor="initialValue">
-        Initial Value
-      </label>
+      <label htmlFor="initialValue">Initial Value</label>
       <input
         type="number"
         name="initialValue"
         defaultValue={bondState.initialValue}
         onChange={handleChange}
       />
-      <label htmlFor="targetValue">
-        Target Value
-      </label>
+      <label htmlFor="targetValue">Target Value</label>
       <input
         type="number"
         name="targetValue"
         defaultValue={bondState.targetValue}
         onChange={handleChange}
       />
-      <label htmlFor="maturityInMonths">
-        Maturity in Months
-      </label>
+      <label htmlFor="maturityInMonths">Maturity in Months</label>
       <input
         type="number"
         name="maturityInMonths"
         defaultValue={bondState.maturityInMonths}
         onChange={handleChange}
       />
-      <Button label="Save" type="submit"/>
+      <Button label="Save" type="submit" />
     </form>
-  )
+  );
 }

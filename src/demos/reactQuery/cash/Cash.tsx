@@ -1,13 +1,12 @@
-import { CashAsset } from '../../../types';
-import { useState } from 'react';
-import EditCashForm from './EditCashForm.tsx';
-import Button from '../../../components/Button.tsx';
+import { CashAsset } from "../../../types";
+import { useState } from "react";
+import EditCashForm from "./EditCashForm";
+import Button from "../../../components/Button";
 
 type CashProps = {
-  cash: CashAsset
-}
-export default function Cash({cash}: CashProps) {
-
+  cash: CashAsset;
+};
+export default function Cash({ cash }: CashProps) {
   const [editing, setEditing] = useState(false);
 
   function toggleForm() {
@@ -16,26 +15,24 @@ export default function Cash({cash}: CashProps) {
 
   return (
     <div>
-      { !editing &&
-          <section>
-              Account Number: {cash.accountNumber} -
-              Account Type: {cash.accountType} -
-              Balance {cash.balance}
-          </section>
-      }
+      {!editing && (
+        <section>
+          Account Number: {cash.accountNumber} - Account Type:{" "}
+          {cash.accountType} - Balance {cash.balance}
+        </section>
+      )}
 
-      { editing &&
-          <section>
-              <EditCashForm cash={cash} onClose={() => setEditing(false) } />
-          </section>
-      }
+      {editing && (
+        <section>
+          <EditCashForm cash={cash} onClose={() => setEditing(false)} />
+        </section>
+      )}
 
       <Button
         type="button"
-        label={ editing ? 'Close' : 'Edit '}
-        onClick={toggleForm} />
-
+        label={editing ? "Close" : "Edit "}
+        onClick={toggleForm}
+      />
     </div>
-  )
-
+  );
 }

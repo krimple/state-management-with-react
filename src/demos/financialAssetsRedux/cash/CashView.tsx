@@ -1,16 +1,13 @@
-import Cash from './Cash';
-import { CashAsset } from '../../../types';
-import { useAppSelector } from '../store/hooks.ts';
+import Cash from "./Cash";
+import { CashAsset } from "../../../types";
+import { useAppSelector } from "../store/hooks";
 
 export default function CashView() {
-  const cashAssets = useAppSelector(state => state.cash);
+  const cashAssets = useAppSelector((state) => state.cash);
 
-  const cashElements = cashAssets.map(cashAsset =>
-    (<Cash key={cashAsset.id} cash={cashAsset as CashAsset } />));
+  const cashElements = cashAssets.map((cashAsset) => (
+    <Cash key={cashAsset.id} cash={cashAsset as CashAsset} />
+  ));
 
-  return (
-    <>
-      {cashElements}
-    </>
-  );
+  return <>{cashElements}</>;
 }

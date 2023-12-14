@@ -1,5 +1,5 @@
-import FinancialAssets from './FinancialAssets.tsx';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import FinancialAssets from "./FinancialAssets";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function FinancialAssetsWithReactQuery() {
   const queryClient = new QueryClient();

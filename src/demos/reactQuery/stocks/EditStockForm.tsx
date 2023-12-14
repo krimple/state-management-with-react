@@ -1,28 +1,32 @@
-import { StockAsset } from '../../../types';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import Button from '../../../components/Button.tsx';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchJsonThrowingErrors } from '../utils/fetch-utils.ts';
+import { StockAsset } from "../../../types";
+import { ChangeEvent, FormEvent, useState } from "react";
+import Button from "../../../components/Button";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { fetchJsonThrowingErrors } from "../utils/fetch-utils";
 
 interface EditStockFormProps {
-  stock: StockAsset,
-  onClose: () => void
+  stock: StockAsset;
+  onClose: () => void;
 }
 
-export default function EditStockForm({stock: originalStockData, onClose}: EditStockFormProps) {
+export default function EditStockForm({
+  stock: originalStockData,
+  onClose,
+}: EditStockFormProps) {
+  const [stockState, setFormState] = useState(originalStockData);
 
   const client = useQueryClient();
-  const {mutate, isError, error, isSuccess, isPending} = useMutation({
+  const { mutate, isError, error, isSuccess, isPending } = useMutation({
     mutationFn: (updatedStock: StockAsset) => {
       return fetchJsonThrowingErrors(`/api/stocks/${updatedStock.id}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify(updatedStock),
-        headers: { 'Content-Type': 'application/json'}}
-      );
+        headers: { "Content-Type": "application/json" },
+      });
     },
     onSuccess: () => {
-      return client.invalidateQueries({ queryKey: ['stocks'] });
-    }
+      return client.invalidateQueries({ queryKey: ["stocks"] });
+    },
   });
 
   if (isError) {
@@ -37,11 +41,9 @@ export default function EditStockForm({stock: originalStockData, onClose}: EditS
     return <p>Update successful.</p>;
   }
 
-  const [stockState, setFormState] = useState(originalStockData);
-
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setFormState((formState: StockAsset) => {
-      return {...formState, [event.target.name]: event.target.value};
+      return { ...formState, [event.target.name]: event.target.value };
     });
   }
 
@@ -52,9 +54,7 @@ export default function EditStockForm({stock: originalStockData, onClose}: EditS
   }
 
   return (
-    <form
-      className="grid-form"
-      onSubmit={handleSubmit}>
+    <form className="grid-form" onSubmit={handleSubmit}>
       <label htmlFor="ticker">Ticker Symbol</label>
       <input
         type="string"
@@ -83,7 +83,7 @@ export default function EditStockForm({stock: originalStockData, onClose}: EditS
         defaultValue={stockState.description}
         onChange={handleChange}
       />
-      <Button label="Save" type="submit"/>
+      <Button label="Save" type="submit" />
     </form>
-  )
+  );
 }

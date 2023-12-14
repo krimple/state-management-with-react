@@ -1,15 +1,14 @@
-import { StockAsset } from '../../../types';
-import { useState } from 'react';
-import Button from '../../../components/Button';
-import EditStockForm from './EditStockForm.tsx';
-
+import { StockAsset } from "../../../types";
+import { useState } from "react";
+import Button from "../../../components/Button";
+import EditStockForm from "./EditStockForm";
 
 export interface StockProps {
-  stock: StockAsset,
-  onUpdated: () => void
+  stock: StockAsset;
+  onUpdated: () => void;
 }
 
-export default function Stock({stock, onUpdated}: StockProps) {
+export default function Stock({ stock, onUpdated }: StockProps) {
   const [editing, setEditing] = useState(false);
 
   function handleSaveCompleted() {
@@ -23,25 +22,22 @@ export default function Stock({stock, onUpdated}: StockProps) {
   }
 
   if (!stock) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
   return (
     <>
-      {!editing &&
-          <section>
-            Ticker: {stock.ticker} - 
-              Basis: {stock.basisCost} -
-              Current Value: {stock.currentValue} -
-              Info {stock.description}
-          </section>
-      }
-      { editing &&
-          <EditStockForm stock={stock} onClose={handleSaveCompleted} /> }
+      {!editing && (
+        <section>
+          Ticker: {stock.ticker} - Basis: {stock.basisCost} - Current Value:{" "}
+          {stock.currentValue} - Info {stock.description}
+        </section>
+      )}
+      {editing && <EditStockForm stock={stock} onClose={handleSaveCompleted} />}
       <Button
         type="button"
-        label={ editing ? 'Close' : 'Edit'}
-        onClick={toggleForm} />
+        label={editing ? "Close" : "Edit"}
+        onClick={toggleForm}
+      />
     </>
-  )
+  );
 }
-
