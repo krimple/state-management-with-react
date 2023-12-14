@@ -1,7 +1,7 @@
 import StocksView from "./stocks/StocksView";
 import BondsView from "./bonds/BondsView";
-import Card from "../../components/Card.tsx";
-import CashView from "./cash/CashView.tsx";
+import Card from "../../components/Card";
+import CashView from "./cash/CashView";
 import { Suspense } from "react";
 
 export default function FinancialAssets() {

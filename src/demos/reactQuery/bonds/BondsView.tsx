@@ -1,7 +1,7 @@
 import Bond from "./Bond";
 import { BondAsset } from "../../../types";
 import { useQuery } from "@tanstack/react-query";
-import { fetchJsonThrowingErrors } from "../utils/fetch-utils.ts";
+import { fetchJsonThrowingErrors } from "../utils/fetch-utils";
 
 export default function BondsView() {
   const {

@@ -1,4 +1,4 @@
-import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer.ts";
+import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer";
 import Cash from "./Cash";
 import { CashAsset, isCashAsset } from "../../../types";
 

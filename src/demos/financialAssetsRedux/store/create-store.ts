@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { stocksReducer } from "../stocks/stocks-slice.ts";
-import { bondsReducer } from "../bonds/bonds-slice.ts";
-import { cashReducer } from "../cash/cash-slice.ts";
+import { stocksReducer } from "../stocks/stocks-slice";
+import { bondsReducer } from "../bonds/bonds-slice";
+import { cashReducer } from "../cash/cash-slice";
 
 const store = configureStore({
   devTools: true,

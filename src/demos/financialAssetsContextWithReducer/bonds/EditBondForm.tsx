@@ -1,8 +1,8 @@
 import { BondAsset } from "../../../types";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer.ts";
-import Button from "../../../components/Button.tsx";
-import { doSaveAsset } from "../financial-assets-reducer.ts";
+import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer";
+import Button from "../../../components/Button";
+import { doSaveAsset } from "../financial-assets-reducer";
 
 interface EditBondFormProps {
   bond: BondAsset;

@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { StockAsset } from "../../../types";
-import Button from "../../../components/Button.tsx";
-import { updateStock } from "./stocks-slice.ts";
-import { useAppDispatch } from "../store/hooks.ts";
+import Button from "../../../components/Button";
+import { updateStock } from "./stocks-slice";
+import { useAppDispatch } from "../store/hooks";
 
 interface EditStockFormProps {
   stock: StockAsset;

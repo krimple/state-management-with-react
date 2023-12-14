@@ -1,8 +1,8 @@
 import { BondAsset } from "../../../types";
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "../../../components/Button.tsx";
+import Button from "../../../components/Button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { fetchJsonThrowingErrors } from "../utils/fetch-utils.ts";
+import { fetchJsonThrowingErrors } from "../utils/fetch-utils";
 
 interface EditBondFormProps {
   bond: BondAsset;

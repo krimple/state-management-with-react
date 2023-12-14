@@ -1,7 +1,7 @@
 import Cash from "./Cash";
 import { CashAsset } from "../../../types";
 import { useEffect, useState } from "react";
-import { getCash } from "../../../apis/get-assets.ts";
+import { getCash } from "../../../apis/get-assets";
 
 export default function CashView() {
   const [cash, setCash] = useState<CashAsset[]>([]);

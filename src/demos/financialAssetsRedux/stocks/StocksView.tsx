@@ -1,6 +1,6 @@
 import Stock from "./Stock";
 import { StockAsset } from "../../../types";
-import { useAppSelector } from "../store/hooks.ts";
+import { useAppSelector } from "../store/hooks";
 
 export default function StocksView() {
   const stockAssets = useAppSelector((state) => state.stocks);

@@ -1,7 +1,7 @@
 import { BondAsset } from "../../../types";
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "../../../components/Button.tsx";
-import { saveAsset } from "../../../apis/save-asset.ts";
+import Button from "../../../components/Button";
+import { saveAsset } from "../../../apis/save-asset";
 
 interface EditBondFormProps {
   bond: BondAsset;

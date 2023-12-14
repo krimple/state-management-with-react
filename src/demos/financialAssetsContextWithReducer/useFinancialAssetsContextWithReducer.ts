@@ -1,8 +1,5 @@
 import { createContext, Dispatch, useContext } from "react";
-import type {
-  FinancialAssetsState,
-  Actions,
-} from "./financial-assets-reducer.ts";
+import type { FinancialAssetsState, Actions } from "./financial-assets-reducer";
 
 // Note: we have to provide a default for the Context value, but it will be ignored by
 // the provider when we mount it with a value. This default is to avoid having a type | undefined

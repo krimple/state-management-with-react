@@ -21,4 +21,9 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'import/extensions': ["error", "never",{ "jpg": "always", "ico": "always", "png" : "always", "css": "always" }]
   },
+  settings: {
+    'react': {
+      'version': 'detect'
+    }
+  }
 }

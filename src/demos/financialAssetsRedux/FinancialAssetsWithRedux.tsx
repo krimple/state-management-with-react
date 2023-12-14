@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
-import FinancialAssets from "./FinancialAssets.tsx";
-import { store } from "./store/create-store.ts";
+import FinancialAssets from "./FinancialAssets";
+import { store } from "./store/create-store";
 
 export default function FinancialAssetsWithRedux() {
   return (

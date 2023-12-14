@@ -1,7 +1,7 @@
 import { CashAsset } from "../../../types";
 import { useState } from "react";
-import EditCashForm from "./EditCashForm.tsx";
-import Button from "../../../components/Button.tsx";
+import EditCashForm from "./EditCashForm";
+import Button from "../../../components/Button";
 
 type CashProps = {
   cash: CashAsset;

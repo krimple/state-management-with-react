@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer.ts";
+import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer";
 import { StockAsset } from "../../../types";
-import Button from "../../../components/Button.tsx";
-import { doSaveAsset } from "../financial-assets-reducer.ts";
+import Button from "../../../components/Button";
+import { doSaveAsset } from "../financial-assets-reducer";
 
 interface EditStockFormProps {
   stock: StockAsset;

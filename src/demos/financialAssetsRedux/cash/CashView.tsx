@@ -1,6 +1,6 @@
 import Cash from "./Cash";
 import { CashAsset } from "../../../types";
-import { useAppSelector } from "../store/hooks.ts";
+import { useAppSelector } from "../store/hooks";
 
 export default function CashView() {
   const cashAssets = useAppSelector((state) => state.cash);

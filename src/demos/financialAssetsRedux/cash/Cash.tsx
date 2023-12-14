@@ -1,7 +1,7 @@
 import { CashAsset } from "../../../types";
 import { useState } from "react";
 import Button from "../../../components/Button";
-import EditCashForm from "./EditCashForm.tsx";
+import EditCashForm from "./EditCashForm";
 
 export interface CashProps {
   cash: CashAsset;

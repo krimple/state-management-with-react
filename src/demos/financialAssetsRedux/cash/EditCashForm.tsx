@@ -1,8 +1,8 @@
 import { CashAsset } from "../../../types";
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "../../../components/Button.tsx";
-import { updateCash } from "./cash-slice.ts";
-import { useAppDispatch } from "../store/hooks.ts";
+import Button from "../../../components/Button";
+import { updateCash } from "./cash-slice";
+import { useAppDispatch } from "../store/hooks";
 
 interface EditCashFormProps {
   cash: CashAsset;

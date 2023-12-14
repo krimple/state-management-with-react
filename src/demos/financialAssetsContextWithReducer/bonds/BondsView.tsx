@@ -1,4 +1,4 @@
-import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer.ts";
+import { useFinancialAssetsContext } from "../useFinancialAssetsContextWithReducer";
 import Bond from "./Bond";
 import { BondAsset, isBondAsset } from "../../../types";
 

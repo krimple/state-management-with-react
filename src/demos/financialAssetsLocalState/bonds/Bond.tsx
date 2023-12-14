@@ -1,7 +1,7 @@
 import { BondAsset } from "../../../types";
 import { useState } from "react";
 import Button from "../../../components/Button";
-import EditBondForm from "./EditBondForm.tsx";
+import EditBondForm from "./EditBondForm";
 
 export interface BondProps {
   bond: BondAsset;

@@ -1,7 +1,7 @@
 import Bond from "./Bond";
 import { BondAsset } from "../../../types";
 import { useEffect, useState } from "react";
-import { getBonds } from "../../../apis/get-assets.ts";
+import { getBonds } from "../../../apis/get-assets";
 
 export default function BondView() {
   const [bonds, setBonds] = useState<BondAsset[]>([]);

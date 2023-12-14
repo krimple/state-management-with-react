@@ -1,7 +1,7 @@
 import Stock from "./Stock";
 import { StockAsset } from "../../../types";
 import { useEffect, useState } from "react";
-import { getStocks } from "../../../apis/get-assets.ts";
+import { getStocks } from "../../../apis/get-assets";
 
 export default function StockView() {
   const [stocks, setStocks] = useState<StockAsset[]>([]);

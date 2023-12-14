@@ -1,10 +1,10 @@
 import {
   FinancialAssetsContext,
   seedFinancialAssets,
-} from "./useFinancialAssetsContextWithReducer.ts";
+} from "./useFinancialAssetsContextWithReducer";
 import { Suspense, useReducer } from "react";
-import FinancialAssets from "./FinancialAssets.tsx";
-import financialAssetsReducer from "./financial-assets-reducer.ts";
+import FinancialAssets from "./FinancialAssets";
+import financialAssetsReducer from "./financial-assets-reducer";
 
 export default function FinancialAssetsContextWithReducer() {
   // note - suspense is useless here, added to show how it cannot detect actions tripped by

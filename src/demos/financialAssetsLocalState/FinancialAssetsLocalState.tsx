@@ -5,7 +5,7 @@ import { FinancialAssetsContextProvider } from "./useFinancialAssetsWithContext"
 import { Suspense, useEffect, useState } from "react";
 import { FinancialAssetType } from "../../types";
 import { getAssets } from "../../apis";
-import Card from "../../components/Card.tsx";
+import Card from "../../components/Card";
 
 export default function FinancialAssetsLocalState() {
   const [assets, setAssets] = useState<FinancialAssetType[] | null>(null);
