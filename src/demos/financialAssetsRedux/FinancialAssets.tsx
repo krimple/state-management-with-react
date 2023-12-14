@@ -16,7 +16,7 @@ export default function FinancialAssets() {
     dispatch(fetchCash());
     dispatch(fetchBonds());
     dispatch(fetchStocks());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Suspense fallback={<p>Loading...</p>}>
