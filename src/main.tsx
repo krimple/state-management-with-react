@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./index.css";
+import "./styles.css";
 import { createBrowserRouter } from "react-router-dom";
 import FinancialAssetsContextDriven from "./demos/financialAssetsContext/FinancialAssetsContextDriven";
 import FinancialAssetsContextWithReducer from "./demos/financialAssetsContextWithReducer/FinancialAssetsContextWithReducer";

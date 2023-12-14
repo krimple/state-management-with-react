@@ -1,7 +1,6 @@
 import StocksView from "./stocks/StocksView";
 import BondsView from "./bonds/BondsView";
 import CashView from "./cash/CashView";
-import { FinancialAssetsContextProvider } from "./useFinancialAssetsWithContext";
 import { Suspense, useEffect, useState } from "react";
 import { FinancialAssetType } from "../../types";
 import { getAssets } from "../../apis";
@@ -21,18 +20,16 @@ export default function FinancialAssetsLocalState() {
   }
   return (
     <Suspense fallback={<p>Loading context demo...</p>}>
-      <FinancialAssetsContextProvider value={assets}>
-        <h3>Using React Context</h3>
-        <Card title="Stocks">
-          <StocksView />
-        </Card>
-        <Card title="Bonds">
-          <BondsView />
-        </Card>
-        <Card title="Cash">
-          <CashView />
-        </Card>
-      </FinancialAssetsContextProvider>
+      <h3>Local (component-level) State Demo</h3>
+      <Card title="Stocks">
+        <StocksView />
+      </Card>
+      <Card title="Bonds">
+        <BondsView />
+      </Card>
+      <Card title="Cash">
+        <CashView />
+      </Card>
     </Suspense>
   );
 }
