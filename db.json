@@ -72,8 +72,8 @@
     {
       "id": 12,
       "ticker": "YWVN",
-      "basisCost": 219.05,
-      "currentValue": 151.96,
+      "basisCost": "219",
+      "currentValue": "151",
       "description": "Company 2"
     },
     {
@@ -186,7 +186,7 @@
       "id": 27,
       "issuingAgency": "Municipal",
       "bondSeries": "General",
-      "initialValue": 360.36,
+      "initialValue": "360",
       "targetValue": 303.06,
       "maturityInMonths": 257
     },
