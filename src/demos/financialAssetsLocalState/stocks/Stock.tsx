@@ -1,43 +1,47 @@
-import { StockAsset } from "../../../types";
-import { useState } from "react";
-import Button from "../../../components/Button";
-import EditStockForm from "./EditStockForm";
+import Button from '../../../components/Button';
+import { useEditing } from '../../../hooks/editingHook';
+import { StockAsset } from '../../../types';
+import EditStockForm from './EditStockForm';
 
 export interface StockProps {
-  stock: StockAsset;
-  onUpdated: () => void;
+    stock: StockAsset;
+    onUpdated: () => void;
 }
 
+/**
+ * One stock asset either shown as read-only data with an edit button or as an editable form
+ * for update.
+ *
+ * @param stock the stock to display/edit
+ * @param onUpdated an event we provide for the parent component, StocksView, in order to refresh the datasource
+ * @constructor
+ */
 export default function Stock({ stock, onUpdated }: StockProps) {
-  const [editing, setEditing] = useState(false);
+    // state for this component: whether we're showing the editor form or the list of attributes
+    const { isEditing, toggleEditing } = useEditing(false);
 
-  function handleSaveCompleted() {
-    setEditing(false);
-    onUpdated();
-  }
+    function handleSaveCompleted() {
+        toggleEditing();
+        onUpdated();
+    }
 
-  // TODO - turn form toggle into hook?
-  function toggleForm() {
-    setEditing(!editing);
-  }
+    // TODO - turn form toggle into hook?
+    function toggleForm() {
+        toggleEditing();
+    }
 
-  if (!stock) {
-    return <p>Loading...</p>;
-  }
-  return (
-    <>
-      {!editing && (
-        <section>
-          Ticker: {stock.ticker} - Basis: {stock.basisCost} - Current Value:{" "}
-          {stock.currentValue} - Info {stock.description}
-        </section>
-      )}
-      {editing && <EditStockForm stock={stock} onClose={handleSaveCompleted} />}
-      <Button
-        type="button"
-        label={editing ? "Close" : "Edit"}
-        onClick={toggleForm}
-      />
-    </>
-  );
+    return (
+        <>
+            {!isEditing && (
+                <>
+                    <Button type="button" label="Edit" onClick={toggleForm} />
+                    <span className="mx-2">
+                        Ticker: {stock.ticker} - Basis: {stock.basisCost} - Current Value: {stock.currentValue} - Info{' '}
+                    </span>
+                    {stock.description}
+                </>
+            )}
+            {isEditing && <EditStockForm stock={stock} onClose={handleSaveCompleted} />}
+        </>
+    );
 }

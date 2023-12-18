@@ -1,14 +1,13 @@
-import { BondAsset } from "../../../types";
+import { BondAsset } from '../../../types';
 
 type BondProps = {
-  bond: BondAsset;
+    bond: BondAsset;
 };
 export default function Bond({ bond }: BondProps) {
-  return (
-    <p>
-      Bond: {bond.issuingAgency} - Series {bond.bondSeries} -{" "}
-      {bond.initialValue} for {bond.maturityInMonths} months ={" "}
-      {bond.targetValue}
-    </p>
-  );
+    return (
+        <p>
+            Bond: {bond.issuingAgency} - Series {bond.bondSeries} - {bond.initialValue} for {bond.maturityInMonths}{' '}
+            months = {bond.targetValue}
+        </p>
+    );
 }

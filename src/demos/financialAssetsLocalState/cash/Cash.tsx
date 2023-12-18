@@ -1,45 +1,36 @@
-import { CashAsset } from "../../../types";
-import { useState } from "react";
-import Button from "../../../components/Button";
-import EditCashForm from "./EditCashForm";
+import Button from '../../../components/Button';
+import { useEditing } from '../../../hooks/editingHook';
+import { CashAsset } from '../../../types';
+import EditCashForm from './EditCashForm';
 
 export interface CashProps {
-  cash: CashAsset;
-  onUpdated: () => void;
+    cash: CashAsset;
+    onUpdated: () => void;
 }
 
 export default function Cash({ cash, onUpdated }: CashProps) {
-  const [editing, setEditing] = useState(false);
+    const { isEditing, toggleEditing } = useEditing(false);
 
-  function handleSaveCompleted() {
-    setEditing(false);
-    onUpdated();
-  }
+    function handleSaveCompleted() {
+        toggleEditing();
+        onUpdated();
+    }
 
-  // TODO - turn form toggle into hook?
-  function toggleForm() {
-    setEditing(!editing);
-  }
+    // TODO - turn form toggle into hook?
+    function toggleForm() {
+        toggleEditing();
+    }
 
-  if (!cash) {
-    return <p>Loading...</p>;
-  }
-  return (
-    <>
-      {!editing && (
-        <section>
-          Cash in{" "}
-          {cash.accountNumber &&
-            "".concat("XXXXXX", cash.accountNumber.substring(-1, 5))}{" "}
-          - Value: {cash.balance} - Type: {cash.accountType}
-        </section>
-      )}
-      {editing && <EditCashForm cash={cash} onClose={handleSaveCompleted} />}
-      <Button
-        type="button"
-        label={editing ? "Close" : "Edit"}
-        onClick={toggleForm}
-      />
-    </>
-  );
+    return (
+        <>
+            {!isEditing && (
+                <div>
+                    <Button type="button" label="Edit" onClick={toggleForm} />
+                    Cash in {cash.accountNumber && ''.concat('XXXXXX', cash.accountNumber.substring(-1, 5))} - Value:{' '}
+                    {cash.balance} - Type: {cash.accountType}
+                </div>
+            )}
+            {isEditing && <EditCashForm cash={cash} onClose={handleSaveCompleted} />}
+        </>
+    );
 }

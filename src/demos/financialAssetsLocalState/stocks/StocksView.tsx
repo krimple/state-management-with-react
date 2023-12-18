@@ -1,24 +1,37 @@
-import Stock from "./Stock";
-import { StockAsset } from "../../../types";
-import { useEffect, useState } from "react";
-import { getStocks } from "../../../apis/get-assets";
+import { useEffect, useState } from 'react';
+import { getStocks } from '../../../apis/get-assets';
+import { StockAsset } from '../../../types';
+import Stock from './Stock';
 
+/**
+ * A component to display an editable list of all stock assets
+ *
+ * @constructor
+ */
 export default function StockView() {
-  const [stocks, setStocks] = useState<StockAsset[]>([]);
+    // component state - the list of stocks. Each stock is sent as a read-only prop
+    // to the Stock component below
+    const [stocks, setStocks] = useState<StockAsset[]>([]);
 
-  useEffect(() => {
-    (async () => {
-      await loadData();
-    })();
-  }, []);
+    // Load the data for all stocks
+    useEffect(() => {
+        (async () => {
+            await loadData();
+        })();
+    }, []);
 
-  async function loadData() {
-    setStocks(await getStocks());
-  }
+    // this is used for both loading the original stock list and
+    // refreshing once a stock component has been
+    // edited.
+    async function loadData() {
+        setStocks(await getStocks());
+    }
 
-  const stockElements = stocks.map((stockEntry) => (
-    <Stock key={stockEntry.id} stock={stockEntry} onUpdated={loadData} />
-  ));
+    // Generate our stock components from the collection of stocks returned
+    const stockElements = stocks.map((stockEntry) => (
+        <Stock key={stockEntry.id} stock={stockEntry} onUpdated={loadData} />
+    ));
 
-  return <>{stockElements}</>;
+    // now render the stocks
+    return <>{stockElements}</>;
 }

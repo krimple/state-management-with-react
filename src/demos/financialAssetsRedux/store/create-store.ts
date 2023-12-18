@@ -1,15 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { stocksReducer } from "../stocks/stocks-slice";
-import { bondsReducer } from "../bonds/bonds-slice";
-import { cashReducer } from "../cash/cash-slice";
+import { configureStore } from '@reduxjs/toolkit';
+import { bondsReducer } from '../bonds/bonds-slice';
+import { cashReducer } from '../cash/cash-slice';
+import { stocksReducer } from '../stocks/stocks-slice';
 
 const store = configureStore({
-  devTools: true,
-  reducer: {
-    stocks: stocksReducer,
-    bonds: bondsReducer,
-    cash: cashReducer,
-  },
+    devTools: true,
+    reducer: {
+        stocks: stocksReducer,
+        bonds: bondsReducer,
+        cash: cashReducer,
+    },
 });
 
 export { store };
