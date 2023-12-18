@@ -1,6 +1,6 @@
-import Button from '../../../components/Button';
 import { useEditing } from '../../../hooks/editingHook';
 import { BondAsset } from '../../../types';
+import BondDisplay from './BondDisplay.tsx';
 import EditBondForm from './EditBondForm';
 
 export interface BondProps {
@@ -8,7 +8,7 @@ export interface BondProps {
     onUpdated: () => void;
 }
 
-export default function Bond({ bond, onUpdated }: BondProps) {
+export default function BondView({ bond, onUpdated }: BondProps) {
     const { isEditing, toggleEditing } = useEditing(false);
     function handleSaveCompleted() {
         toggleEditing();
@@ -21,15 +21,9 @@ export default function Bond({ bond, onUpdated }: BondProps) {
     }
 
     return (
-        <>
-            {!isEditing && (
-                <div>
-                    <Button type="button" label="Edit" onClick={toggleForm} />
-                    Bond: {bond.issuingAgency} - Series {bond.bondSeries} -{bond.initialValue}
-                    for {bond.maturityInMonths} months = {bond.targetValue}
-                </div>
-            )}
+        <div className="asset-display-row">
+            {!isEditing && <BondDisplay bond={bond} toggleForm={toggleForm} />}
             {isEditing && <EditBondForm bond={bond} onClose={handleSaveCompleted} />}
-        </>
+        </div>
     );
 }

@@ -29,7 +29,7 @@ export default function FinancialAssetsContextDriven() {
                 <Card title="Bonds">
                     <BondsView />
                 </Card>
-                <Card title="Cash">
+                <Card title="CashAccountView">
                     <CashView />
                 </Card>
             </FinancialAssetsContextProvider>

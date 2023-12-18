@@ -3,8 +3,8 @@ import { getAssets } from '../../apis';
 import Card from '../../components/Card';
 import { FinancialAssetType } from '../../types';
 import BondsView from './bonds/BondsView';
-import CashView from './cash/CashView';
-import StocksView from './stocks/StocksView';
+import CashView from './cash/CashAccountsView.tsx';
+import StocksView from './stocks/StockAssetsView.tsx';
 
 export default function FinancialAssetsLocalState() {
     const [assets, setAssets] = useState<FinancialAssetType[] | null>(null);
@@ -27,7 +27,7 @@ export default function FinancialAssetsLocalState() {
             <Card title="Bonds">
                 <BondsView />
             </Card>
-            <Card title="Cash">
+            <Card title="CashAccountView">
                 <CashView />
             </Card>
         </>

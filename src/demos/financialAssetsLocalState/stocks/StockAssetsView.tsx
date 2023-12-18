@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getStocks } from '../../../apis/get-assets';
 import { StockAsset } from '../../../types';
-import Stock from './Stock';
+import StockAssetView from './StockAssetView.tsx';
 
 /**
  * A component to display an editable list of all stock assets
@@ -10,7 +10,7 @@ import Stock from './Stock';
  */
 export default function StockView() {
     // component state - the list of stocks. Each stock is sent as a read-only prop
-    // to the Stock component below
+    // to the StockAssetView component below
     const [stocks, setStocks] = useState<StockAsset[]>([]);
 
     // Load the data for all stocks
@@ -29,7 +29,7 @@ export default function StockView() {
 
     // Generate our stock components from the collection of stocks returned
     const stockElements = stocks.map((stockEntry) => (
-        <Stock key={stockEntry.id} stock={stockEntry} onUpdated={loadData} />
+        <StockAssetView key={stockEntry.id} stock={stockEntry} onUpdated={loadData} />
     ));
 
     // now render the stocks
