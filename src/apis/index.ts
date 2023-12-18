@@ -1,1 +1,1 @@
-export { getAssets } from "./get-assets";
+export { getAssets } from './get-assets';

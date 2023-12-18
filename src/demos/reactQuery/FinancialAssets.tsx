@@ -1,21 +1,21 @@
-import StocksView from "./stocks/StocksView";
-import BondsView from "./bonds/BondsView";
-import Card from "../../components/Card";
-import CashView from "./cash/CashView";
-import { Suspense } from "react";
+import { Suspense } from 'react';
+import Card from '../../components/Card';
+import BondAssetsView from './bonds/BondAssetsView';
+import CashAccountsView from './cash/CashAccountsView';
+import StocksView from './stocks/StocksView';
 
 export default function FinancialAssets() {
-  return (
-    <Suspense fallback={<p>Loading...</p>}>
-      <Card title="Stocks">
-        <StocksView />
-      </Card>
-      <Card title="Bonds">
-        <BondsView />
-      </Card>
-      <Card title="Cash">
-        <CashView />
-      </Card>
-    </Suspense>
-  );
+    return (
+        <Suspense fallback={<p>Loading...</p>}>
+            <Card title="Stocks">
+                <StocksView />
+            </Card>
+            <Card title="Bonds">
+                <BondAssetsView />
+            </Card>
+            <Card title="CashAccountView">
+                <CashAccountsView />
+            </Card>
+        </Suspense>
+    );
 }

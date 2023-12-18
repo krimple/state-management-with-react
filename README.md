@@ -24,3 +24,7 @@ This is a work in progress.
 * Use plain Redux - since Redux is now deprecating `createStore` from the redux package and strongly urging to switch to `@reduxjs/toolkit` instead, we only use Redux Toolkit
 * Form validation - not the focus of this lab so no form validation is supplied. Recommend looking into `react-form-hook` and `yup` as options for this
 * Anything with server-side React - though we could do a similar repo in the future around next.js or other server-side engines and their approaches
+
+## Creative Commons attributions
+
+* State by Adrien Coquet from <a href="https://thenounproject.com/browse/icons/term/state/" target="_blank" title="State Icons">Noun Project</a> (CC BY 3.0)
