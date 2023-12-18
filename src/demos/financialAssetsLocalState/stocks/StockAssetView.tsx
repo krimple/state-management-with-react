@@ -13,7 +13,7 @@ export interface StockProps {
  * for update.
  *
  * @param stock the stock to display/edit
- * @param onUpdated an event we provide for the parent component, StocksView, in order to refresh the datasource
+ * @param onUpdated an event we provide for the parent component, StockAssetsView, in order to refresh the datasource
  * @constructor
  */
 export default function StockAssetView({ stock, onUpdated }: StockProps) {

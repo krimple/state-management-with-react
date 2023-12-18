@@ -9,7 +9,7 @@ interface EditCashFormProps {
     onClose: () => void;
 }
 
-export default function EditCashForm({ cash: originalCashData, onClose }: EditCashFormProps) {
+export default function EditCashAccountForm({ cash: originalCashData, onClose }: EditCashFormProps) {
     const dispatch = useAppDispatch();
     const [cashState, setFormState] = useState(originalCashData);
 

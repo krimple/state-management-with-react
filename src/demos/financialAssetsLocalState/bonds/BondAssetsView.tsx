@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getBonds } from '../../../apis/get-assets';
 import { BondAsset } from '../../../types';
-import BondView from './BondView.tsx';
+import BondAssetView from './BondAssetView.tsx';
 
-export default function BondsView() {
+export default function BondAssetsView() {
     const [bonds, setBonds] = useState<BondAsset[]>([]);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function BondsView() {
     }
 
     const bondElements = bonds.map((bondEntry) => (
-        <BondView key={bondEntry.id} bond={bondEntry} onUpdated={loadData} />
+        <BondAssetView key={bondEntry.id} bond={bondEntry} onUpdated={loadData} />
     ));
 
     return <>{bondElements}</>;

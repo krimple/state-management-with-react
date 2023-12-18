@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAssets } from '../../apis';
 import Card from '../../components/Card';
 import { FinancialAssetType } from '../../types';
-import BondsView from './bonds/BondsView';
+import BondAssetsView from './bonds/BondAssetsView.tsx';
 import CashView from './cash/CashAccountsView.tsx';
 import StocksView from './stocks/StockAssetsView.tsx';
 
@@ -25,7 +25,7 @@ export default function FinancialAssetsLocalState() {
                 <StocksView />
             </Card>
             <Card title="Bonds">
-                <BondsView />
+                <BondAssetsView />
             </Card>
             <Card title="CashAccountView">
                 <CashView />

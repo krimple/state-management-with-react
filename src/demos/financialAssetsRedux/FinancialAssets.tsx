@@ -1,11 +1,11 @@
-// import CashView from './cash/CashView';
+// import CashAccountsView from './cash/CashAccountsView';
 import { Suspense, useEffect } from 'react';
 import Card from '../../components/Card';
-import BondsView from './bonds/BondsView';
+import BondAssetsView from './bonds/BondAssetsView.tsx';
 import { fetchBonds } from './bonds/bonds-slice';
-import CashView from './cash/CashView';
+import CashAccountsView from './cash/CashAccountsView.tsx';
 import { fetchCash } from './cash/cash-slice';
-import StocksView from './stocks/StocksView';
+import StockAssetsView from './stocks/StockAssetsView.tsx';
 import { fetchStocks } from './stocks/stocks-slice';
 import { useAppDispatch } from './store/hooks';
 
@@ -22,13 +22,13 @@ export default function FinancialAssets() {
         <Suspense fallback={<p>Loading...</p>}>
             <h3>Using Redux with Redux Toolkit</h3>
             <Card title="Stocks">
-                <StocksView />
+                <StockAssetsView />
             </Card>
             <Card title="Bonds">
-                <BondsView />
+                <BondAssetsView />
             </Card>
             <Card title="CashAccountView">
-                <CashView />
+                <CashAccountsView />
             </Card>
         </Suspense>
     );
