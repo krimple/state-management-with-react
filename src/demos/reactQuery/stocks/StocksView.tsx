@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { StockAsset } from '../../../types';
 import { fetchJsonThrowingErrors } from '../utils/fetch-utils';
-import Stock from './Stock';
+import StockAssetView from './StockAssetView';
 
 export default function StocksView() {
     const {
@@ -31,7 +31,8 @@ export default function StocksView() {
         return <p>No data.</p>;
     }
 
-    const stockElements = data.map((stockAsset: StockAsset) => <Stock key={stockAsset.id} stock={stockAsset} />) || [];
+    const stockElements =
+        data.map((stockAsset: StockAsset) => <StockAssetView key={stockAsset.id} stock={stockAsset} />) || [];
 
     return <>{stockElements}</>;
 }

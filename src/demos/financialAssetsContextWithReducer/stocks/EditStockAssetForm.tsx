@@ -8,7 +8,7 @@ interface EditStockFormProps {
     stock: StockAsset;
     onClose: () => void;
 }
-export default function EditStockForm({ stock: initialStockData, onClose }: EditStockFormProps) {
+export default function EditStockAssetForm({ stock: initialStockData, onClose }: EditStockFormProps) {
     const [stockData, setStockData] = useState<StockAsset>(initialStockData);
     const { dispatch } = useFinancialAssetsContext();
 
@@ -57,8 +57,10 @@ export default function EditStockForm({ stock: initialStockData, onClose }: Edit
         <form className="grid-form" onSubmit={handleSubmit}>
             <label htmlFor="ticker">Ticker</label>
             <input type="text" name="ticker" defaultValue={stockData.ticker} onChange={handleChange} />
+
             <label htmlFor="basisCost">Basis</label>
             <input type="number" min={0} name="basisCost" defaultValue={stockData.basisCost} onChange={handleChange} />
+
             <label htmlFor="currentValue">Current Value</label>
             <input
                 type="number"
@@ -67,10 +69,11 @@ export default function EditStockForm({ stock: initialStockData, onClose }: Edit
                 defaultValue={stockData.currentValue}
                 onChange={handleChange}
             />
+
             <label htmlFor="description">Info</label>
             <input type="text" name="description" defaultValue={stockData.description} onChange={handleChange} />
-            {/* Two-column grid, skip a column before button */}
-            <div>&nbsp;</div>
+
+            <Button label="Cancel" type="button" onClick={onClose} />
             <Button label="Save" type="submit" />
         </form>
     );

@@ -54,10 +54,14 @@ export default function EditCashForm({ cash: originalCashData, onClose }: EditCa
         <form className="grid-form" onSubmit={handleSubmit}>
             <label htmlFor="accountNumber">Account Number</label>
             <input type="string" name="accountNumber" defaultValue={cashData.accountNumber} onChange={handleChange} />
+
             <label htmlFor="accountType">Account Type</label>
             <input type="string" name="accountType" defaultValue={cashData.accountType} onChange={handleChange} />
+
             <label htmlFor="balance">Balance</label>
             <input type="number" name="balance" defaultValue={cashData.balance} onChange={handleChange} />
+
+            <Button label="Cancel" type="button" onClick={onClose} />
             <Button label="Save" type="submit" />
         </form>
     );

@@ -1,36 +1,23 @@
-import { Suspense, useEffect, useState } from 'react';
-import { getAssets } from '../../apis';
+import { Suspense } from 'react';
 import Card from '../../components/Card';
-import { FinancialAssetType } from '../../types';
-import BondsView from './bonds/BondsView';
-import CashView from './cash/CashView';
-import StocksView from './stocks/StocksView';
-import { FinancialAssetsContextProvider } from './useFinancialAssetsWithContext';
+import { FinancialAssetsContextProvider } from './FinancialAssetsContextProvider';
+import BondAssetsView from './bonds/BondAssetsView';
+import CashAccountsView from './cash/CashAccountsView';
+import StockAssetsView from './stocks/StockAssetsView';
 
 export default function FinancialAssetsContextDriven() {
-    const [assets, setAssets] = useState<FinancialAssetType[] | null>(null);
-    useEffect(() => {
-        (async () => {
-            setAssets(await getAssets());
-        })();
-    }, []);
-
-    // if we don't have 'em...
-    if (!assets) {
-        return <p>Loading...</p>;
-    }
     return (
         <Suspense fallback={<p>Loading context demo...</p>}>
-            <FinancialAssetsContextProvider value={assets}>
+            <FinancialAssetsContextProvider>
                 <h3>Using React Context</h3>
                 <Card title="Stocks">
-                    <StocksView />
+                    <StockAssetsView />
                 </Card>
                 <Card title="Bonds">
-                    <BondsView />
+                    <BondAssetsView />
                 </Card>
                 <Card title="CashAccountView">
-                    <CashView />
+                    <CashAccountsView />
                 </Card>
             </FinancialAssetsContextProvider>
         </Suspense>

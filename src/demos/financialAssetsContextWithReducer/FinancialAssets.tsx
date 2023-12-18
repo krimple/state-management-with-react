@@ -3,7 +3,7 @@ import Card from '../../components/Card';
 import BondsView from './bonds/BondsView';
 import CashView from './cash/CashView';
 import { doLoadData } from './financial-assets-reducer';
-import StocksView from './stocks/StocksView';
+import StockAssetsView from './stocks/StockAssetsView';
 import { useFinancialAssetsContext } from './useFinancialAssetsContextWithReducer';
 
 export default function FinancialAssets() {
@@ -22,7 +22,7 @@ export default function FinancialAssets() {
         <>
             <h3>Using Context + React Reducer</h3>
             <Card title="Stocks">
-                <StocksView />
+                <StockAssetsView />
             </Card>
             <Card title="Bonds">
                 <BondsView />

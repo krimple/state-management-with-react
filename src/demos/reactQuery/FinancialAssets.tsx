@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import Card from '../../components/Card';
-import BondsView from './bonds/BondsView';
-import CashView from './cash/CashView';
+import BondAssetsView from './bonds/BondAssetsView';
+import CashAccountsView from './cash/CashAccountsView';
 import StocksView from './stocks/StocksView';
 
 export default function FinancialAssets() {
@@ -11,10 +11,10 @@ export default function FinancialAssets() {
                 <StocksView />
             </Card>
             <Card title="Bonds">
-                <BondsView />
+                <BondAssetsView />
             </Card>
             <Card title="CashAccountView">
-                <CashView />
+                <CashAccountsView />
             </Card>
         </Suspense>
     );

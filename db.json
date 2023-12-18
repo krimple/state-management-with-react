@@ -4,7 +4,7 @@
       "id": 1,
       "accountNumber": "29801187-4923-6428",
       "accountType": "SAVINGS",
-      "balance": 506.91
+      "balance": "5036.91"
     },
     {
       "id": 2,
@@ -28,7 +28,7 @@
       "id": 5,
       "accountNumber": "37823180-9515-8468",
       "accountType": "CHECKING",
-      "balance": 789.47
+      "balance": "789"
     },
     {
       "id": 6,
@@ -65,8 +65,8 @@
     {
       "id": 11,
       "ticker": "TQKJ",
-      "basisCost": 473.02,
-      "currentValue": 243.55,
+      "basisCost": 473,
+      "currentValue": "243",
       "description": "Company 1"
     },
     {
@@ -138,7 +138,7 @@
       "id": 21,
       "issuingAgency": "US Treasury",
       "bondSeries": "General",
-      "initialValue": 91.73,
+      "initialValue": "100",
       "targetValue": 193.38,
       "maturityInMonths": 284
     },

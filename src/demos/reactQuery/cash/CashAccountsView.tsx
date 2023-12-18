@@ -1,22 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
-import { BondAsset } from '../../../types';
+import { CashAsset } from '../../../types';
 import { fetchJsonThrowingErrors } from '../utils/fetch-utils';
-import Bond from './Bond';
+import CashAccountView from './CashAccountView';
 
-export default function BondsView() {
+export default function CashAccountsView() {
     const {
         data,
         isError,
         error,
         isFetching,
     }: {
-        data: BondAsset[] | undefined;
+        data: CashAsset[] | undefined;
         isError: boolean;
         error: any;
         isFetching: any;
     } = useQuery({
-        queryKey: ['bonds'],
-        queryFn: () => fetchJsonThrowingErrors<BondAsset[]>('/api/bonds', { method: 'GET' }),
+        queryKey: ['cash'],
+        queryFn: () => fetchJsonThrowingErrors<CashAsset[]>('/api/cash', { method: 'GET' }),
     });
 
     if (isFetching) {
@@ -31,7 +31,8 @@ export default function BondsView() {
         return <p>No data.</p>;
     }
 
-    const bondElements = data.map((bondAsset: BondAsset) => <Bond key={bondAsset.id} bond={bondAsset} />) || [];
+    const cashElements =
+        data.map((cashAsset: CashAsset) => <CashAccountView key={cashAsset.id} cash={cashAsset} />) || [];
 
-    return <>{bondElements}</>;
+    return <>{cashElements}</>;
 }

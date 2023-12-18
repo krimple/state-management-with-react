@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getBonds } from '../../../apis/get-assets';
 import { BondAsset } from '../../../types';
-import BondAssetView from './BondAssetView.tsx';
+import BondAssetView from './BondAssetView';
 
 export default function BondAssetsView() {
     const [bonds, setBonds] = useState<BondAsset[]>([]);
