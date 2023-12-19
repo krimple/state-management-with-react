@@ -1,6 +1,6 @@
 import { BondAsset } from '../../../types';
 import { useAppSelector } from '../store/hooks';
-import BondAssetView from './BondAssetView.tsx';
+import BondAssetView from './BondAssetView';
 
 export default function BondAssetsView() {
     const bondsAssets = useAppSelector((state) => state.bonds);

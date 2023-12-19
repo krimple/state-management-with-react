@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StockAsset } from '../../../types';
 import EditStockForm from './EditStockForm';
-import StockAssetDisplay from './StockAssetDisplay.tsx';
+import StockAssetDisplay from './StockAssetDisplay';
 
 export interface StockProps {
     stock: StockAsset;

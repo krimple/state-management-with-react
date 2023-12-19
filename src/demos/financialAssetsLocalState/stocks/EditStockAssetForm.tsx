@@ -8,7 +8,7 @@ interface EditStockFormProps {
     onClose: () => void;
 }
 
-export default function EditStockForm({ stock: originalStockData, onClose }: EditStockFormProps) {
+export default function EditStockAssetForm({ stock: originalStockData, onClose }: EditStockFormProps) {
     const [stockState, setFormState] = useState<StockAsset>(originalStockData);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {

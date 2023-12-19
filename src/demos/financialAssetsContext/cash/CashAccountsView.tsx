@@ -3,7 +3,9 @@ import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';
 import CashAccountView from './CashAccountView';
 
 export default function CashAccountsView() {
-    let { cash } = useContext(FinancialAssetsContext)?.assets;
+    const context = useContext(FinancialAssetsContext)?.assets;
+
+    const { cash } = context;
 
     if (!cash) {
         return <p>Wait...</p>;

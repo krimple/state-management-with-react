@@ -64,7 +64,7 @@
   "stocks": [
     {
       "id": 11,
-      "ticker": "TQKJ",
+      "ticker": "VSTK",
       "basisCost": 473,
       "currentValue": "243",
       "description": "Company 1"
