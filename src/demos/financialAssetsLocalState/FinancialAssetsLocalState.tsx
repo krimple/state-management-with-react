@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { getAssets } from '../../apis';
 import Card from '../../components/Card';
 import { FinancialAssetType } from '../../types';
-import BondAssetsView from './bonds/BondAssetsView.tsx';
-import CashView from './cash/CashAccountsView.tsx';
-import StocksView from './stocks/StockAssetsView.tsx';
+import BondAssetsView from './bonds/BondAssetsView';
+import CashView from './cash/CashAccountsView';
+import StocksView from './stocks/StockAssetsView';
 
 export default function FinancialAssetsLocalState() {
     const [assets, setAssets] = useState<FinancialAssetType[] | null>(null);
@@ -19,7 +19,7 @@ export default function FinancialAssetsLocalState() {
         return <p>Loading...</p>;
     }
     return (
-        <>
+        <section className="card">
             <h3>Local (component-level) State Demo</h3>
             <Card title="Stocks">
                 <StocksView />
@@ -30,6 +30,6 @@ export default function FinancialAssetsLocalState() {
             <Card title="CashAccountView">
                 <CashView />
             </Card>
-        </>
+        </section>
     );
 }

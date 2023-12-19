@@ -2,7 +2,7 @@ import { CashAsset, isCashAsset } from '../../../types';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer';
 import CashAccountView from './CashAccountView';
 
-export default function CashView() {
+export default function CashAccountsView() {
     const { assets } = useFinancialAssetsContext().state;
     const cashElements = assets
 

@@ -1,17 +1,24 @@
 import Button from '../../../components/Button';
 import { StockAsset } from '../../../types';
 
-export interface StockProps {
+interface StockDisplayProps {
     stock: StockAsset;
     toggleForm: () => void;
 }
-export default function StockAssetDisplay({ stock, toggleForm }: StockProps) {
+
+export default function StockAssetDisplay({ stock, toggleForm }: StockDisplayProps) {
     return (
-        <div className="flex">
-            <Button label="Edit" type="button" onClick={toggleForm} />
-            <span className="mx-2 py-2">
-                Ticker: {stock.ticker} - Basis: {stock.basisCost}, Info {stock.description}
-            </span>
+        <div className="flex flex-auto py-auto">
+            <Button type="button" label="Edit" onClick={toggleForm} />
+            <div className="asset-display-fields">
+                <div className="font-bold">{stock.description}</div>
+                <div className="font-bold">Ticker</div>
+                <div>{stock.ticker}</div>
+                <div className="font-bold">Basis</div>
+                <div>{stock.basisCost}</div>
+                <div className="font-bold">Current Value</div>
+                <div>{stock.currentValue}</div>
+            </div>
         </div>
     );
 }

@@ -4,36 +4,36 @@
 
 @layer base {
     h1 {
-        @apply font-bold text-3xl font-sans mb-4 p-4 bg-gray-200 border-gray-100 border
+        @apply font-bold text-xl sm:text-2xl font-sans mb-0.5 sm:mb-4 p-1 sm:p-4 bg-gray-200 border-gray-100 border
     }
     h2 {
-        @apply font-bold text-2xl font-sans mb-2 p-2
+        @apply font-bold text-lg sm:text-2xl font-sans mb-2 p-2
     }
     h3 {
-        @apply font-bold text-xl font-sans mb-1 p-2
-    }
-    p {
-        @apply font-normal font-serif p-2
+        @apply font-bold text-base sm:text-lg font-sans mb-1 p-2
     }
     label {
-        @apply m-4
+        @apply m-0.5 sm:m-4
     }
     input {
-        @apply m-4 pl-1 border-2 border-gray-400
+        @apply m-0.5 sm:m-4 pl-1 border-2 border-gray-400
     }
-    section {
-        @apply m-2 p-2
+    section.card {
+        @apply m-0.5 sm:m-2 p-0.5 sm:p-2
     }
 }
 @layer components {
-    .rounded-panel {
-        @apply bg-white p-5 m-5 border-gray-500 border-2 rounded-2xl
-    }
     .grid-form {
-        @apply bg-white p-4 border border-gray-200 rounded-3xl grid grid-cols-2
+        @apply bg-white p-0.5 sm:p-4 border border-gray-200 rounded-sm sm:rounded-xl grid grid-cols-2
     }
     .asset-display-row {
-        @apply m-2 p-2 border border-black bg-white rounded-sm
+        @apply m-1 p-1 sm:m-4 sm:p-2 border border-black bg-white rounded-sm text-xs sm:text-lg mr-0.5 sm:mr-2
+    }
+    .asset-display-row span {
+        @apply m-0 sm:m-2 p-0 sm:p-2
+    }
+    .asset-display-fields {
+        @apply flex flex-row gap-0.5 md:gap-2 flex-wrap my-auto
     }
 }
 
