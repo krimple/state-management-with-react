@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Card from '../../components/Card';
 import BondsView from './bonds/BondsView';
-import CashView from './cash/CashView';
+import CashAccountsView from './cash/CashAccountsView';
 import { doLoadData } from './financial-assets-reducer';
 import StockAssetsView from './stocks/StockAssetsView';
 import { useFinancialAssetsContext } from './useFinancialAssetsContextWithReducer';
@@ -28,7 +28,7 @@ export default function FinancialAssets() {
                 <BondsView />
             </Card>
             <Card title="CashAccountView">
-                <CashView />
+                <CashAccountsView />
             </Card>
         </>
     );

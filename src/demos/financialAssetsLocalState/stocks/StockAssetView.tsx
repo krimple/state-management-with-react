@@ -1,7 +1,7 @@
 import { useEditing } from '../../../hooks/editingHook';
 import { StockAsset } from '../../../types';
 import EditStockForm from './EditStockForm';
-import StockDisplay from './StockDisplay.tsx';
+import StockAssetDisplay from './StockAssetDisplay.tsx';
 
 export interface StockProps {
     stock: StockAsset;
@@ -32,7 +32,7 @@ export default function StockAssetView({ stock, onUpdated }: StockProps) {
 
     return (
         <div className="asset-display-row">
-            {!isEditing && <StockDisplay stock={stock} toggleForm={toggleForm} />}
+            {!isEditing && <StockAssetDisplay stock={stock} toggleForm={toggleForm} />}
             {isEditing && <EditStockForm stock={stock} onClose={handleSaveCompleted} />}
         </div>
     );

@@ -1,19 +1,24 @@
 import Button from '../../../components/Button';
 import { CashAsset } from '../../../types';
 
-type CashProps = {
+interface CashDisplayProps {
     cash: CashAsset;
     toggleForm: () => void;
-};
+}
 
-export default function CashAccountDisplay({ cash, toggleForm }: CashProps) {
+export default function CashAccountDisplay({ cash, toggleForm }: CashDisplayProps) {
     return (
-        <div className="flex">
+        <div className="flex flex-auto py-auto">
             <Button type="button" label="Edit" onClick={toggleForm} />
-            <span className="mx-2 py-2">
-                Cash in {''.concat('XXXXXX', cash.accountNumber.substring(-1, 5))} : {cash.balance} - Type :{' '}
-                {cash.accountType}
-            </span>
+            <div className="asset-display-fields">
+                <div className="font-bold">
+                    Cash in {cash.accountNumber && ''.concat('XXXXXX', cash.accountNumber.substring(-1, 5))}
+                </div>
+                <div className="font-bold">Balance</div>
+                <div>{cash.balance}</div>
+                <div className="font-bold">Account Type</div>
+                <div>{cash.accountType}</div>
+            </div>
         </div>
     );
 }

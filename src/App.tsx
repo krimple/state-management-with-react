@@ -5,7 +5,7 @@ function App() {
         <div>
             <h1>React State Management Demos</h1>
             <nav>
-                <ul className="px-4 flex flex-row text-blue-800 underline">
+                <ul className="px-1 md:px-4 flex flex-row text-blue-800 underline">
                     <li className="mr-4">
                         <NavLink to={'/local-state'}>Local State Demo</NavLink>
                     </li>
