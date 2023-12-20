@@ -31,22 +31,39 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
 
     return (
         <form className="grid-form" onSubmit={handleSubmit}>
-            <label htmlFor="bondSeries">Bond Series</label>
-            <input type="string" name="bondSeries" defaultValue={bondState.bondSeries} onChange={handleChange} />
-
             <label htmlFor="issuingAgency">Issuing Agency</label>
-            <input type="string" name="issuingAgency" defaultValue={bondState.issuingAgency} onChange={handleChange} />
+            <input type="text" name="issuingAgency" defaultValue={bondState.issuingAgency} onChange={handleChange} />
+
+            <label htmlFor="bondSeries">Bond Series</label>
+            <input type="text" name="bondSeries" defaultValue={bondState.bondSeries} onChange={handleChange} />
 
             <label htmlFor="initialValue">Initial Value</label>
-            <input type="number" name="initialValue" defaultValue={bondState.initialValue} onChange={handleChange} />
+            <input
+                type="number"
+                min={1}
+                step={0.01}
+                name="initialValue"
+                defaultValue={bondState.initialValue}
+                onChange={handleChange}
+            />
 
             <label htmlFor="targetValue">Target Value</label>
-            <input type="number" name="targetValue" defaultValue={bondState.targetValue} onChange={handleChange} />
+            <input
+                type="number"
+                min={1}
+                step={0.01}
+                name="targetValue"
+                defaultValue={bondState.targetValue}
+                onChange={handleChange}
+            />
 
-            <label htmlFor="maturityInMonths">Maturity in Months</label>
+            <label htmlFor="maturityInMonths">Maturity (Months)</label>
             <input
                 type="number"
                 name="maturityInMonths"
+                min={1}
+                step={1}
+                max={360}
                 defaultValue={bondState.maturityInMonths}
                 onChange={handleChange}
             />

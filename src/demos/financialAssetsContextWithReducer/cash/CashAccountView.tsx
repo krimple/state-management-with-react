@@ -1,7 +1,7 @@
 import { useEditing } from '../../../hooks/editingHook';
 import { CashAsset } from '../../../types';
 import CashAccountDisplay from './CashAccountDisplay';
-import EditCashForm from './EditCashForm';
+import EditCashAccountForm from './EditCashAccountForm';
 
 export interface CashProps {
     cash: CashAsset;
@@ -13,7 +13,7 @@ export default function CashAccountView({ cash }: CashProps) {
     return (
         <div className="asset-display-row">
             {!isEditing && <CashAccountDisplay cash={cash} toggleForm={toggleEditing} />}
-            {isEditing && <EditCashForm cash={cash} onClose={toggleEditing} />}
+            {isEditing && <EditCashAccountForm cash={cash} onClose={toggleEditing} />}
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import Button from '../../../components/Button';
+import NumberFormatter from '../../../components/NumberFormatter';
 import { StockAsset } from '../../../types';
 
 interface StockDisplayProps {
@@ -19,10 +20,14 @@ export default function StockAssetDisplay({ stock, toggleForm }: StockDisplayPro
                 <div>{stock.ticker}</div>
 
                 <div className="font-bold">Basis</div>
-                <div>{stock.basisCost}</div>
+                <div>
+                    <NumberFormatter value={stock.basisCost} currency={true} />
+                </div>
 
                 <div className="font-bold">Latest</div>
-                <div>{stock.currentValue}</div>
+                <div>
+                    <NumberFormatter value={stock.currentValue} currency={true} />
+                </div>
             </div>
         </div>
     );

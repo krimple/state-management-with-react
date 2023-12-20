@@ -54,9 +54,15 @@ export default function EditCashForm({ cash: originalCashData, onClose }: EditCa
             <label htmlFor="balance">Balance</label>
             <input type="number" name="balance" min={0} defaultValue={cashState.balance} onChange={handleChange} />
 
-            <label htmlFor="accountNumber">Account Number</label>
-            <input type="text" name="accountNumber" defaultValue={cashState.accountNumber} onChange={handleChange} />
-
+            <label htmlFor="balance">Balance</label>
+            <input
+                type="number"
+                name="balance"
+                min={1}
+                step={0.01}
+                defaultValue={cashState.balance}
+                onChange={handleChange}
+            />
             <label htmlFor="accountType">Account Type</label>
             <input type="string" name="accountType" defaultValue={cashState.accountType} onChange={handleChange} />
 

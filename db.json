@@ -4,7 +4,7 @@
       "id": 1,
       "accountNumber": "29801187-4923-6428",
       "accountType": "SAVINGS",
-      "balance": "5036.91"
+      "balance": "503"
     },
     {
       "id": 2,
@@ -23,8 +23,8 @@
     {
       "id": 4,
       "ticker": "VSTK",
-      "basisCost": "473",
-      "currentValue": "243",
+      "basisCost": "473.3",
+      "currentValue": "243.2",
       "description": "Company 1"
     },
     {
@@ -47,25 +47,25 @@
       "id": 7,
       "issuingAgency": "US Treasury",
       "bondSeries": "General",
-      "initialValue": "1004",
-      "targetValue": 193.38,
-      "maturityInMonths": 284
+      "initialValue": 100,
+      "targetValue": "160",
+      "maturityInMonths": "36"
     },
     {
       "id": 8,
       "issuingAgency": "US Treasury",
       "bondSeries": "I",
-      "initialValue": 374.09,
-      "targetValue": 807.64,
-      "maturityInMonths": 31
+      "initialValue": "150.0",
+      "targetValue": "200.00",
+      "maturityInMonths": "60"
     },
     {
       "id": 9,
       "issuingAgency": "US Treasury",
       "bondSeries": "EE",
-      "initialValue": 495.71,
-      "targetValue": 381.28,
-      "maturityInMonths": 215
+      "initialValue": "50",
+      "targetValue": "200",
+      "maturityInMonths": "360"
     }
   ]
 }

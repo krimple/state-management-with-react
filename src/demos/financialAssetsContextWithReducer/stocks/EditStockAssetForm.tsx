@@ -58,14 +58,22 @@ export default function EditStockAssetForm({ stock: initialStockData, onClose }:
             <label htmlFor="ticker">Ticker</label>
             <input type="text" name="ticker" defaultValue={stockData.ticker} onChange={handleChange} />
 
-            <label htmlFor="basisCost">Basis</label>
-            <input type="number" min={0} name="basisCost" defaultValue={stockData.basisCost} onChange={handleChange} />
+            <label htmlFor="basisCost">Cost Basis</label>
+            <input
+                type="number"
+                name="basisCost"
+                min={1}
+                step={0.01}
+                defaultValue={stockData.basisCost}
+                onChange={handleChange}
+            />
 
             <label htmlFor="currentValue">Current Value</label>
             <input
                 type="number"
-                min={0}
                 name="currentValue"
+                min={1}
+                step={0.01}
                 defaultValue={stockData.currentValue}
                 onChange={handleChange}
             />

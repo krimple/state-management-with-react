@@ -62,13 +62,21 @@ export default function EditBondForm({ bond: originalBondData, onClose }: EditBo
             <input
                 type="number"
                 min={1}
+                step={0.01}
                 name="initialValue"
                 defaultValue={bondState.initialValue}
                 onChange={handleChange}
             />
 
             <label htmlFor="targetValue">Target Value</label>
-            <input type="number" name="targetValue" defaultValue={bondState.targetValue} onChange={handleChange} />
+            <input
+                type="number"
+                min={1}
+                step={0.01}
+                name="targetValue"
+                defaultValue={bondState.targetValue}
+                onChange={handleChange}
+            />
 
             <label htmlFor="maturityInMonths">Maturity (Months)</label>
             <input

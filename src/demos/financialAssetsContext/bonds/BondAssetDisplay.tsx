@@ -1,4 +1,5 @@
 import Button from '../../../components/Button';
+import NumberFormatter from '../../../components/NumberFormatter';
 import { BondAsset } from '../../../types';
 
 interface BondAssetDisplayProps {
@@ -19,13 +20,19 @@ export default function BondAssetDisplay({ bond, toggleForm }: BondAssetDisplayP
                 <div>{bond.bondSeries}</div>
 
                 <div className="font-bold">Initial</div>
-                <div>{bond.initialValue}</div>
+                <div>
+                    <NumberFormatter value={bond.initialValue} currency={true} />
+                </div>
 
                 <div className="font-bold">Maturity</div>
-                <div>{bond.maturityInMonths} months</div>
+                <div>
+                    <NumberFormatter value={bond.maturityInMonths} /> mo
+                </div>
 
                 <div className="font-bold">Target</div>
-                <div>{bond.targetValue}</div>
+                <div>
+                    <NumberFormatter value={bond.targetValue} currency={true} />
+                </div>
             </div>
         </div>
     );
