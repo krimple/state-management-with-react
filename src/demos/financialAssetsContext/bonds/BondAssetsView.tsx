@@ -3,10 +3,12 @@ import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';
 import BondAssetView from './BondAssetView';
 
 export default function BondAssetsView() {
-    let { bonds } = useContext(FinancialAssetsContext)?.assets;
+    const context = useContext(FinancialAssetsContext)?.assets;
+
+    const { bonds } = context;
 
     if (!bonds) {
-        return <p>Wait...</p>;
+        return <p>Loading...</p>;
     }
 
     const bondElements = bonds.map((bond) => <BondAssetView key={bond.id} bond={bond} />);

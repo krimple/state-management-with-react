@@ -54,12 +54,31 @@ export default function EditStockForm({ stock: originalStockData, onClose }: Edi
         <form className="grid-form" onSubmit={handleSubmit}>
             <label htmlFor="ticker">Ticker Symbol</label>
             <input type="string" name="ticker" defaultValue={stockState.ticker} onChange={handleChange} />
+
             <label htmlFor="basisCost">Cost Basis</label>
-            <input type="text" name="basisCost" defaultValue={stockState.basisCost} onChange={handleChange} />
+            <input
+                type="number"
+                name="basisCost"
+                min={1}
+                step={0.01}
+                defaultValue={stockState.basisCost}
+                onChange={handleChange}
+            />
+
             <label htmlFor="currentValue">Current Value</label>
-            <input type="string" name="currentValue" defaultValue={stockState.currentValue} onChange={handleChange} />
+            <input
+                type="number"
+                name="currentValue"
+                min={1}
+                step={0.01}
+                defaultValue={stockState.currentValue}
+                onChange={handleChange}
+            />
+
             <label htmlFor="description">Description</label>
             <input type="string" name="description" defaultValue={stockState.description} onChange={handleChange} />
+
+            <Button label="Cancel" type="button" onClick={onClose} />
             <Button label="Save" type="submit" />
         </form>
     );

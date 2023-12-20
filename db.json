@@ -4,7 +4,7 @@
       "id": 1,
       "accountNumber": "29801187-4923-6428",
       "accountType": "SAVINGS",
-      "balance": "5036.91"
+      "balance": "503"
     },
     {
       "id": 2,
@@ -17,202 +17,55 @@
       "accountNumber": "29527832-1480-3162",
       "accountType": "CHECKING",
       "balance": 529.25
-    },
-    {
-      "id": 4,
-      "accountNumber": "64431890-9791-7697",
-      "accountType": "SAVINGS",
-      "balance": 719.75
-    },
-    {
-      "id": 5,
-      "accountNumber": "37823180-9515-8468",
-      "accountType": "CHECKING",
-      "balance": "789"
-    },
-    {
-      "id": 6,
-      "accountNumber": "27750175-5934-6938",
-      "accountType": "SAVINGS",
-      "balance": 504.73
-    },
-    {
-      "id": 7,
-      "accountNumber": "15071219-8077-2708",
-      "accountType": "SAVINGS",
-      "balance": 476.69
-    },
-    {
-      "id": 8,
-      "accountNumber": "91912021-5518-3201",
-      "accountType": "SAVINGS",
-      "balance": 100.94
-    },
-    {
-      "id": 9,
-      "accountNumber": "85304204-9642-3494",
-      "accountType": "SAVINGS",
-      "balance": 874.93
-    },
-    {
-      "id": 10,
-      "accountNumber": "36407693-7724-3853",
-      "accountType": "CHECKING",
-      "balance": 775.54
     }
   ],
   "stocks": [
     {
-      "id": 11,
-      "ticker": "TQKJ",
-      "basisCost": 473,
-      "currentValue": "243",
+      "id": 4,
+      "ticker": "VSTK",
+      "basisCost": "473.3",
+      "currentValue": "243.2",
       "description": "Company 1"
     },
     {
-      "id": 12,
+      "id": 5,
       "ticker": "YWVN",
       "basisCost": "219",
       "currentValue": "151",
       "description": "Company 2"
     },
     {
-      "id": 13,
+      "id": 6,
       "ticker": "MYRO",
       "basisCost": 418.66,
       "currentValue": 186.8,
       "description": "Company 3"
-    },
-    {
-      "id": 14,
-      "ticker": "ANJU",
-      "basisCost": 347.21,
-      "currentValue": 316.11,
-      "description": "Company 4"
-    },
-    {
-      "id": 15,
-      "ticker": "UISB",
-      "basisCost": 108.68,
-      "currentValue": 259.44,
-      "description": "Company 5"
-    },
-    {
-      "id": 16,
-      "ticker": "MUCP",
-      "basisCost": 440.2,
-      "currentValue": 265.48,
-      "description": "Company 6"
-    },
-    {
-      "id": 17,
-      "ticker": "IQGG",
-      "basisCost": 473.53,
-      "currentValue": 208.61,
-      "description": "Company 7"
-    },
-    {
-      "id": 18,
-      "ticker": "BAUG",
-      "basisCost": 354.74,
-      "currentValue": 159.26,
-      "description": "Company 8"
-    },
-    {
-      "id": 19,
-      "ticker": "EHMC",
-      "basisCost": 462.97,
-      "currentValue": 464.21,
-      "description": "Company 9"
-    },
-    {
-      "id": 20,
-      "ticker": "UMLC",
-      "basisCost": 465.88,
-      "currentValue": 345.76,
-      "description": "Company 10"
     }
   ],
   "bonds": [
     {
-      "id": 21,
+      "id": 7,
       "issuingAgency": "US Treasury",
       "bondSeries": "General",
-      "initialValue": "100",
-      "targetValue": 193.38,
-      "maturityInMonths": 284
+      "initialValue": 100,
+      "targetValue": "160",
+      "maturityInMonths": "36"
     },
     {
-      "id": 22,
-      "issuingAgency": "US Treasury",
-      "bondSeries": "I",
-      "initialValue": 374.09,
-      "targetValue": 807.64,
-      "maturityInMonths": 31
-    },
-    {
-      "id": 23,
-      "issuingAgency": "US Treasury",
-      "bondSeries": "EE",
-      "initialValue": 495.71,
-      "targetValue": 381.28,
-      "maturityInMonths": 215
-    },
-    {
-      "id": 24,
-      "issuingAgency": "US Treasury",
-      "bondSeries": "General",
-      "initialValue": 494.84,
-      "targetValue": 363.61,
-      "maturityInMonths": 15
-    },
-    {
-      "id": 25,
-      "issuingAgency": "Municipal",
-      "bondSeries": "General",
-      "initialValue": 237.75,
-      "targetValue": 117.84,
-      "maturityInMonths": 341
-    },
-    {
-      "id": 26,
-      "issuingAgency": "Municipal",
-      "bondSeries": "General",
-      "initialValue": 72.5,
-      "targetValue": 964.99,
-      "maturityInMonths": 86
-    },
-    {
-      "id": 27,
-      "issuingAgency": "Municipal",
-      "bondSeries": "General",
-      "initialValue": "360",
-      "targetValue": 303.06,
-      "maturityInMonths": 257
-    },
-    {
-      "id": 28,
+      "id": 8,
       "issuingAgency": "US Treasury",
       "bondSeries": "I",
-      "initialValue": 215.4,
-      "targetValue": 610.99,
-      "maturityInMonths": 317
+      "initialValue": "150.0",
+      "targetValue": "200.00",
+      "maturityInMonths": "60"
     },
     {
-      "id": 29,
-      "issuingAgency": "Municipal",
+      "id": 9,
+      "issuingAgency": "US Treasury",
       "bondSeries": "EE",
-      "initialValue": 282.5,
-      "targetValue": 176.47,
-      "maturityInMonths": 187
-    },
-    {
-      "id": 30,
-      "issuingAgency": "Municipal",
-      "bondSeries": "Convertible",
-      "initialValue": 259.81,
-      "targetValue": 679.78,
-      "maturityInMonths": 41
+      "initialValue": "50",
+      "targetValue": "200",
+      "maturityInMonths": "360"
     }
   ]
 }

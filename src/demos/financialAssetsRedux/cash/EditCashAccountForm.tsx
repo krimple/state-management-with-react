@@ -29,10 +29,20 @@ export default function EditCashAccountForm({ cash: originalCashData, onClose }:
         <form className="grid-form" onSubmit={handleSubmit}>
             <label htmlFor="accountNumber">Account Number</label>
             <input type="string" name="accountNumber" defaultValue={cashState.accountNumber} onChange={handleChange} />
+
             <label htmlFor="accountType">Account Type</label>
             <input type="string" name="accountType" defaultValue={cashState.accountType} onChange={handleChange} />
+
             <label htmlFor="balance">Balance</label>
-            <input type="number" name="balance" defaultValue={cashState.balance} onChange={handleChange} />
+            <input
+                type="number"
+                name="balance"
+                min={1}
+                step={0.01}
+                defaultValue={cashState.balance}
+                onChange={handleChange}
+            />
+            <Button label="Cancel" type="button" onClick={onClose} />
             <Button label="Save" type="submit" />
         </form>
     );

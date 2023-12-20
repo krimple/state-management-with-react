@@ -1,11 +1,10 @@
-// import CashAccountsView from './cash/CashAccountsView';
 import { Suspense, useEffect } from 'react';
 import Card from '../../components/Card';
-import BondAssetsView from './bonds/BondAssetsView.tsx';
+import BondAssetsView from './bonds/BondAssetsView';
 import { fetchBonds } from './bonds/bonds-slice';
-import CashAccountsView from './cash/CashAccountsView.tsx';
+import CashAccountsView from './cash/CashAccountsView';
 import { fetchCash } from './cash/cash-slice';
-import StockAssetsView from './stocks/StockAssetsView.tsx';
+import StockAssetsView from './stocks/StockAssetsView';
 import { fetchStocks } from './stocks/stocks-slice';
 import { useAppDispatch } from './store/hooks';
 

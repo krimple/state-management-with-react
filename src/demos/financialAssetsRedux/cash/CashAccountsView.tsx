@@ -1,6 +1,6 @@
 import { CashAsset } from '../../../types';
 import { useAppSelector } from '../store/hooks';
-import CashAccountView from './CashAccountView.tsx';
+import CashAccountView from './CashAccountView';
 
 export default function CashAccountsView() {
     const cashAssets = useAppSelector((state) => state.cash);

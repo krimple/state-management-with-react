@@ -9,7 +9,7 @@ interface EditCashFormProps {
     onClose: () => void;
 }
 
-export default function EditCashForm({ cash: originalCashData, onClose }: EditCashFormProps) {
+export default function EditCashAccountForm({ cash: originalCashData, onClose }: EditCashFormProps) {
     const [cashData, setCashData] = useState<CashAsset>(originalCashData);
     const { dispatch } = useFinancialAssetsContext();
 
@@ -59,8 +59,14 @@ export default function EditCashForm({ cash: originalCashData, onClose }: EditCa
             <input type="string" name="accountType" defaultValue={cashData.accountType} onChange={handleChange} />
 
             <label htmlFor="balance">Balance</label>
-            <input type="number" name="balance" defaultValue={cashData.balance} onChange={handleChange} />
-
+            <input
+                type="number"
+                name="balance"
+                min={1}
+                step={0.01}
+                defaultValue={cashData.balance}
+                onChange={handleChange}
+            />
             <Button label="Cancel" type="button" onClick={onClose} />
             <Button label="Save" type="submit" />
         </form>

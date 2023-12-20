@@ -22,7 +22,9 @@ export const FinancialAssetsContextProvider = ({ children }: { children: ReactNo
     };
 
     useEffect(() => {
-        fetchAssets();
+        (async () => {
+            await fetchAssets();
+        })();
     }, []);
 
     return (

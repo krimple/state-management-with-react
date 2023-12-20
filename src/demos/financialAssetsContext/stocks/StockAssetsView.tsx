@@ -3,7 +3,10 @@ import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';
 import StockAssetView from './StockAssetView';
 
 export default function StockAssetsView() {
-    let { stocks } = useContext(FinancialAssetsContext)?.assets;
+    const context = useContext(FinancialAssetsContext)?.assets;
+
+    const { stocks } = context;
+
     if (!stocks) {
         return <p>Wait...</p>;
     }

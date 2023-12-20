@@ -5,15 +5,13 @@ import EditCashAccountForm from './EditCashAccountForm';
 
 export interface CashProps {
     cash: CashAsset;
-    onUpdated: () => void;
 }
 
-export default function CashAccountView({ cash, onUpdated }: CashProps) {
+export default function CashAccountView({ cash }: CashProps) {
     const { isEditing, toggleEditing } = useEditing(false);
 
     function handleSaveCompleted() {
         toggleEditing();
-        onUpdated();
     }
 
     // TODO - turn form toggle into hook?

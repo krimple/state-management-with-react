@@ -8,7 +8,7 @@ interface EditStockFormProps {
     onClose: () => void;
 }
 
-export default function EditStockForm({ stock: originalStockData, onClose }: EditStockFormProps) {
+export default function EditStockAssetForm({ stock: originalStockData, onClose }: EditStockFormProps) {
     const [stockState, setFormState] = useState<StockAsset>(originalStockData);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -28,14 +28,22 @@ export default function EditStockForm({ stock: originalStockData, onClose }: Edi
             <label htmlFor="ticker">Ticker</label>
             <input type="text" name="ticker" defaultValue={stockState.ticker} onChange={handleChange} />
 
-            <label htmlFor="basisCost">Basis</label>
-            <input type="number" min={0} name="basisCost" defaultValue={stockState.basisCost} onChange={handleChange} />
+            <label htmlFor="basisCost">Cost Basis</label>
+            <input
+                type="number"
+                name="basisCost"
+                min={1}
+                step={0.01}
+                defaultValue={stockState.basisCost}
+                onChange={handleChange}
+            />
 
             <label htmlFor="currentValue">Current Value</label>
             <input
                 type="number"
-                min={0}
                 name="currentValue"
+                min={1}
+                step={0.01}
                 defaultValue={stockState.currentValue}
                 onChange={handleChange}
             />
