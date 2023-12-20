@@ -8,14 +8,16 @@ interface CashDisplayProps {
 
 export default function CashAccountDisplay({ cash, toggleForm }: CashDisplayProps) {
     return (
-        <div className="flex flex-auto py-auto">
+        <div className="asset-display-container">
             <Button type="button" label="Edit" onClick={toggleForm} />
+
             <div className="asset-display-fields">
-                <div className="font-bold">
-                    Cash in {cash.accountNumber && ''.concat('XXXXXX', cash.accountNumber.substring(-1, 5))}
-                </div>
+                <div className="font-bold">Account</div>
+                <div>{cash.accountNumber && ''.concat('XX', cash.accountNumber.substring(-1, 5))}</div>
+
                 <div className="font-bold">Balance</div>
                 <div>{cash.balance}</div>
+
                 <div className="font-bold">Account Type</div>
                 <div>{cash.accountType}</div>
             </div>

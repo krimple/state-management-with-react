@@ -29,11 +29,23 @@
     .asset-display-row {
         @apply m-1 p-1 sm:m-4 sm:p-2 border border-black bg-white rounded-sm text-xs sm:text-lg mr-0.5 sm:mr-2
     }
-    .asset-display-row span {
-        @apply m-0 sm:m-2 p-0 sm:p-2
+    .asset-display-container {
+        @apply flex
+    }
+    .asset-display-row div {
+        @apply col-span-1
     }
     .asset-display-fields {
-        @apply flex flex-row gap-0.5 md:gap-2 flex-wrap my-auto
+        @apply grid grid-cols-2 gap-2
+               sm:grid-cols-4 sm:gap-3
+               lg:grid-cols-10 lg:gap-1
+               min-w-fit
+               text-xs sm:text-sm md:text-lg
+               p-0.5 m-0.5 sm:m-4 sm:p-4 md:m-8 md:p-8 lg:m-4 lg:p-4
+               ml-1 mr-auto whitespace-nowrap
+    }
+    .asset-display-fields div {
+
     }
 }
 

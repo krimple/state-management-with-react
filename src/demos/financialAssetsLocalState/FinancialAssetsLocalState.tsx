@@ -13,7 +13,7 @@ export default function FinancialAssetsLocalState() {
             <Card title="Bonds">
                 <BondAssetsView />
             </Card>
-            <Card title="CashAccountView">
+            <Card title="Cash">
                 <CashAccountsView />
             </Card>
         </div>

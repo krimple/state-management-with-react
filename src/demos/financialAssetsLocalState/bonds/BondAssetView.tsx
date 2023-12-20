@@ -15,15 +15,10 @@ export default function BondAssetView({ bond, onUpdated }: BondProps) {
         onUpdated();
     }
 
-    // TODO - turn form toggle into hook?
-    function toggleForm() {
-        toggleEditing();
-    }
-
     return (
         <div className="asset-display-row">
-            {!isEditing && <BondAssetDisplay bond={bond} toggleForm={toggleForm} />}
-            {isEditing && <EditBondForm bond={bond} onClose={handleSaveCompleted} />}
+            {!isEditing && <BondAssetDisplay bond={bond} toggleForm={toggleEditing} />}
+            {isEditing && <EditBondForm bond={bond} onSave={handleSaveCompleted} onCancel={toggleEditing} />}
         </div>
     );
 }

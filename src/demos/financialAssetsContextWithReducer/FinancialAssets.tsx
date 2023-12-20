@@ -27,7 +27,7 @@ export default function FinancialAssets() {
             <Card title="Bonds">
                 <BondsView />
             </Card>
-            <Card title="CashAccountView">
+            <Card title="Cash">
                 <CashAccountsView />
             </Card>
         </>

@@ -68,8 +68,10 @@ export default function EditBondForm({ bond: originalBondData, onClose }: EditBo
         <form className="grid-form" onSubmit={handleSubmit}>
             <label htmlFor="issuingAgency">Issuing Agency</label>
             <input type="text" name="issuingAgency" defaultValue={bondData.issuingAgency} onChange={handleChange} />
+
             <label htmlFor="bondSeries">Bond Series</label>
             <input type="text" name="bondSeries" defaultValue={bondData.bondSeries} onChange={handleChange} />
+
             <label htmlFor="initialValue">Initial Value</label>
             <input
                 type="number"
@@ -78,8 +80,10 @@ export default function EditBondForm({ bond: originalBondData, onClose }: EditBo
                 defaultValue={bondData.initialValue}
                 onChange={handleChange}
             />
+
             <label htmlFor="targetValue">Target Value</label>
             <input type="number" name="targetValue" defaultValue={bondData.targetValue} onChange={handleChange} />
+
             <label htmlFor="maturityInMonths">Maturity (Months)</label>
             <input
                 type="number"
@@ -90,6 +94,8 @@ export default function EditBondForm({ bond: originalBondData, onClose }: EditBo
                 defaultValue={bondData.maturityInMonths}
                 onChange={handleChange}
             />
+
+            <Button label="Cancel" type="button" onClick={onClose} />
             <Button label="Save" type="submit" />
         </form>
     );

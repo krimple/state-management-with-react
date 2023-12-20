@@ -8,15 +8,20 @@ interface StockDisplayProps {
 
 export default function StockAssetDisplay({ stock, toggleForm }: StockDisplayProps) {
     return (
-        <div className="flex flex-auto py-auto">
+        <div className="asset-display-container">
             <Button type="button" label="Edit" onClick={toggleForm} />
+
             <div className="asset-display-fields">
-                <div className="font-bold">{stock.description}</div>
+                <div className="font-bold">Stock</div>
+                <div className="">{stock.description}</div>
+
                 <div className="font-bold">Ticker</div>
                 <div>{stock.ticker}</div>
+
                 <div className="font-bold">Basis</div>
                 <div>{stock.basisCost}</div>
-                <div className="font-bold">Current Value</div>
+
+                <div className="font-bold">Latest</div>
                 <div>{stock.currentValue}</div>
             </div>
         </div>
