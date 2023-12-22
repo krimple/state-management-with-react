@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveAsset } from '../../../apis/save-asset';
+import { saveAsset } from '../../../apis';
 import Button from '../../../components/Button';
 import { CashAsset } from '../../../types';
 

@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { getBonds, getCash, getStocks } from '../../apis/get-assets';
+import { getBonds, getCash, getStocks } from '../../apis';
 import { BondAsset, CashAsset, StockAsset } from '../../types';
 import { FinancialAssetsContext } from './useFinancialAssetsWithContext';
 

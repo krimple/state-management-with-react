@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCash } from '../../../apis/get-assets';
+import { getCash } from '../../../apis';
 import { CashAsset } from '../../../types';
 import CashAccountView from './CashAccountView';
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getBonds } from '../../../apis/get-assets';
+import { getBonds } from '../../../apis';
 import { BondAsset } from '../../../types';
 import BondAssetView from './BondAssetView';
 

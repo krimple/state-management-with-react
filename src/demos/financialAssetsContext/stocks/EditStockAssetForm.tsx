@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { saveAsset } from '../../../apis/save-asset';
+import { saveAsset } from '../../../apis';
 import Button from '../../../components/Button';
 import { StockAsset } from '../../../types';
 import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';

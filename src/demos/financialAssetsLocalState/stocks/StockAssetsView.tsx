@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getStocks } from '../../../apis/get-assets';
+import { getStocks } from '../../../apis';
 import { StockAsset } from '../../../types';
 import StockAssetView from './StockAssetView';
 
