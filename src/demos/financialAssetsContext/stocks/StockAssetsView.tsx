@@ -1,9 +1,9 @@
-import { useContext } from 'react';
-import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';
+import { StockAsset } from '../../../types';
+import useFinancialAssets from '../hooks/useFinancialAssets';
 import StockAssetView from './StockAssetView';
 
 export default function StockAssetsView() {
-    const context = useContext(FinancialAssetsContext)?.assets;
+    const context = useFinancialAssets().assets;
 
     const { stocks } = context;
 
@@ -11,6 +11,6 @@ export default function StockAssetsView() {
         return <p>Wait...</p>;
     }
 
-    const stockElements = stocks.map((stock) => <StockAssetView key={stock.id} stock={stock} />);
+    const stockElements = stocks.map((stock: StockAsset) => <StockAssetView key={stock.id} stock={stock} />);
     return <>{stockElements}</>;
 }

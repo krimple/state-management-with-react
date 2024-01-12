@@ -11,7 +11,7 @@ import StockAssetView from './StockAssetView';
 export default function StockAssetsView() {
     // component state - the list of stocks. Each stock is sent as a read-only prop
     // to the StockAssetView component below
-    const [stocks, setStocks] = useState<StockAsset[] | null>(null);
+    const [stocks, setStocks] = useState<StockAsset[]>([]);
 
     // Load the data for all stocks
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function StockAssetsView() {
     }
 
     // Generate our stock components from the collection of stocks returned
-    const stockElements = stocks?.map((stockEntry) => (
+    const stockElements = stocks.map((stockEntry) => (
         <StockAssetView key={stockEntry.id} stock={stockEntry} onUpdated={loadData} />
     ));
 

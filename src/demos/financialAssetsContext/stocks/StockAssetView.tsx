@@ -1,4 +1,4 @@
-import { useEditing } from '../../../hooks/editingHook';
+import useEditing from '../../../hooks/editingHook';
 import { StockAsset } from '../../../types';
 import EditStockAssetForm from './EditStockAssetForm';
 import StockAssetDisplay from './StockAssetDisplay';
@@ -6,7 +6,7 @@ import StockAssetDisplay from './StockAssetDisplay';
 type StockProps = {
     stock: StockAsset;
 };
-export default function StockAccountView({ stock }: StockProps) {
+export default function StockAssetView({ stock }: StockProps) {
     const { isEditing, toggleEditing } = useEditing(false);
 
     return (

@@ -3,12 +3,12 @@ import { saveAsset } from '../../../apis';
 import Button from '../../../components/Button';
 import { CashAsset } from '../../../types';
 
-interface EditCashFormProps {
+interface EditCashAccountFormProps {
     cash: CashAsset;
     onClose: () => void;
 }
 
-export default function EditCashAccountForm({ cash: originalCashData, onClose }: EditCashFormProps) {
+export default function EditCashAccountForm({ cash: originalCashData, onClose }: EditCashAccountFormProps) {
     const [cashState, setFormState] = useState<CashAsset>(originalCashData);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {

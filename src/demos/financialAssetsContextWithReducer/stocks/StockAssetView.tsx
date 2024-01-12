@@ -1,4 +1,4 @@
-import { useEditing } from '../../../hooks/editingHook';
+import useEditing from '../../../hooks/editingHook';
 import { StockAsset } from '../../../types';
 import EditStockAssetForm from './EditStockAssetForm';
 import StockAssetDisplay from './StockAssetDisplay';

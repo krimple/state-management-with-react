@@ -23,23 +23,36 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
         try {
             await saveAsset(bondState);
         } catch (e) {
-            alert('Save failed. Check log.');
+            console.log('Save failed. Check log.');
             console.error(e);
         }
         onSave();
     }
 
     return (
-        <form className="grid-form" onSubmit={handleSubmit}>
+        <form className="grid-form" data-testid="form" onSubmit={handleSubmit}>
             <label htmlFor="issuingAgency">Issuing Agency</label>
-            <input type="text" name="issuingAgency" defaultValue={bondState.issuingAgency} onChange={handleChange} />
+            <input
+                type="text"
+                data-testid="issuingAgency"
+                name="issuingAgency"
+                defaultValue={bondState.issuingAgency}
+                onChange={handleChange}
+            />
 
             <label htmlFor="bondSeries">Bond Series</label>
-            <input type="text" name="bondSeries" defaultValue={bondState.bondSeries} onChange={handleChange} />
+            <input
+                type="text"
+                data-testid="bondSeries"
+                name="bondSeries"
+                defaultValue={bondState.bondSeries}
+                onChange={handleChange}
+            />
 
             <label htmlFor="initialValue">Initial Value</label>
             <input
                 type="number"
+                data-testid="initialValue"
                 min={1}
                 step={0.01}
                 name="initialValue"
@@ -50,6 +63,7 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
             <label htmlFor="targetValue">Target Value</label>
             <input
                 type="number"
+                data-testid="targetValue"
                 min={1}
                 step={0.01}
                 name="targetValue"
@@ -60,6 +74,7 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
             <label htmlFor="maturityInMonths">Maturity (Months)</label>
             <input
                 type="number"
+                data-testid="maturityInMonths"
                 name="maturityInMonths"
                 min={1}
                 step={1}

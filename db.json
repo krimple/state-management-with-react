@@ -22,14 +22,14 @@
   "stocks": [
     {
       "id": 4,
-      "ticker": "VSTK",
-      "basisCost": "473.3",
-      "currentValue": "243.2",
-      "description": "Company 1"
+      "ticker": "ABCDE",
+      "basisCost": "3133",
+      "currentValue": "2343",
+      "description": "ABCD Corp"
     },
     {
       "id": 5,
-      "ticker": "YWVN",
+      "ticker": "YWVNE",
       "basisCost": "219",
       "currentValue": "151",
       "description": "Company 2"
@@ -39,7 +39,7 @@
       "ticker": "MYRO",
       "basisCost": 418.66,
       "currentValue": 186.8,
-      "description": "Company 3"
+      "description": "I AM SAVED"
     }
   ],
   "bonds": [
@@ -47,7 +47,7 @@
       "id": 7,
       "issuingAgency": "US Treasury",
       "bondSeries": "General",
-      "initialValue": 100,
+      "initialValue": 1000,
       "targetValue": "160",
       "maturityInMonths": "36"
     },

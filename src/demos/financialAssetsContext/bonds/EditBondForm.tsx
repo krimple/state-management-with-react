@@ -1,15 +1,15 @@
-import { ChangeEvent, FormEvent, useContext, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { saveAsset } from '../../../apis';
 import Button from '../../../components/Button';
 import { BondAsset } from '../../../types';
-import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';
+import useFinancialAssets from '../hooks/useFinancialAssets';
 
 interface EditBondFormProps {
     bond: BondAsset;
     onClose: () => void;
 }
 export default function EditBondForm({ bond: originalBondData, onClose }: EditBondFormProps) {
-    const { fetchAssets } = useContext(FinancialAssetsContext);
+    const { fetchAssets } = useFinancialAssets();
     const [bondData, setBondData] = useState<BondAsset>(originalBondData);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
