@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveAsset } from '../../../apis';
+import { saveBond } from '../../../apis/save-asset';
 import Button from '../../../components/Button';
 import { BondAsset } from '../../../types';
 
@@ -21,7 +21,7 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await saveAsset(bondState);
+            await saveBond(bondState);
         } catch (e) {
             console.log('Save failed. Check log.');
             console.error(e);

@@ -1,19 +1,29 @@
 import { Dispatch } from 'react';
-import { getAssets } from '../../apis';
-import { FinancialAssetType, isBondAsset, isCashAsset, isStockAsset } from '../../types';
+import { getAssets, saveBond, saveCashAccount, saveStock } from '../../apis';
+import { BondAsset, CashAsset, CombinedFinancialAssetsStateType, StockAsset } from '../../types';
 
 export interface FinancialAssetsState {
-    assets: Array<FinancialAssetType>;
+    assets: CombinedFinancialAssetsStateType;
 }
 
 export type LoadDataAction = {
     type: 'LOAD_DATA';
-    payload: FinancialAssetType[];
+    payload: CombinedFinancialAssetsStateType;
 };
 
-export type UpdateAssetAction = {
-    type: 'UPDATE_ASSET';
-    payload: FinancialAssetType;
+export type UpdateBondAssetAction = {
+    type: 'UPDATE_BOND_ASSET';
+    payload: BondAsset;
+};
+
+export type UpdateCashAssetAction = {
+    type: 'UPDATE_CASH_ASSET';
+    payload: CashAsset;
+};
+
+export type UpdateStockAssetAction = {
+    type: 'UPDATE_STOCK_ASSET';
+    payload: StockAsset;
 };
 
 // TODO can we pull the dispatch method in this file, and not force it into the component? Doubtful but maybe.
@@ -21,42 +31,53 @@ export async function doLoadData(dispatch: Dispatch<Actions>) {
     dispatch({ type: 'LOAD_DATA', payload: await getAssets() });
 }
 
-export async function doSaveAsset(asset: FinancialAssetType, dispatch: Dispatch<Actions>) {
-    let assetType: string = '';
-    if (isStockAsset(asset)) {
-        assetType = 'stocks';
-    } else if (isCashAsset(asset)) {
-        assetType = 'cash';
-    } else if (isBondAsset(asset)) {
-        assetType = 'bonds';
-    } else {
-        throw new Error('Not a vaild asset type.');
-    }
-    const response = await fetch(`/api/${assetType}/${asset.id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(asset),
-    });
-
-    if (!response?.ok) {
-        throw new Error(`doSaveAsset failed. ${response?.status} - ${response?.statusText}`);
-    }
-
-    // go ahead and update the state
-    dispatch({ type: 'UPDATE_ASSET', payload: asset });
+export async function doSaveBond(bond: BondAsset, dispatch: Dispatch<Actions>) {
+    await saveBond(bond);
+    dispatch({ type: 'UPDATE_BOND_ASSET', payload: bond });
 }
 
-export type Actions = LoadDataAction | UpdateAssetAction;
+export async function doSaveCashAccount(cash: CashAsset, dispatch: Dispatch<Actions>) {
+    await saveCashAccount(cash);
+    dispatch({ type: 'UPDATE_CASH_ASSET', payload: cash });
+}
+
+export async function doSaveStock(stock: StockAsset, dispatch: Dispatch<Actions>) {
+    await saveStock(stock);
+    dispatch({ type: 'UPDATE_STOCK_ASSET', payload: stock });
+}
+
+export type Actions = LoadDataAction | UpdateBondAssetAction | UpdateCashAssetAction | UpdateStockAssetAction;
 
 export default function financialAssetsReducer(state: FinancialAssetsState, action: Actions) {
     switch (action.type) {
         case 'LOAD_DATA':
-            return { assets: [...action.payload] };
-        case 'UPDATE_ASSET':
+            return { assets: { ...action.payload } };
+        case 'UPDATE_BOND_ASSET':
             return {
-                assets: state.assets.map((asset) => (asset.id === action.payload.id ? action.payload : asset)),
+                assets: {
+                    ...state.assets,
+                    bond: state.assets.bonds.map((bondAsset: BondAsset) =>
+                        bondAsset.id === action.payload.id ? action.payload : bondAsset
+                    ),
+                },
+            };
+        case 'UPDATE_CASH_ASSET':
+            return {
+                assets: {
+                    ...state.assets,
+                    cash: state.assets.cash.map((cashAsset: CashAsset) =>
+                        cashAsset.id === action.payload.id ? action.payload : cashAsset
+                    ),
+                },
+            };
+        case 'UPDATE_STOCK_ASSET':
+            return {
+                assets: {
+                    ...state.assets,
+                    stocks: state.assets.stocks.map((stockAsset: StockAsset) =>
+                        stockAsset.id === action.payload.id ? action.payload : stockAsset
+                    ),
+                },
             };
         default:
             return state;

@@ -2,9 +2,9 @@
   "cash": [
     {
       "id": 1,
-      "accountNumber": "29801187-4923-6428",
+      "accountNumber": "29801187-4923-64273",
       "accountType": "SAVINGS",
-      "balance": "503"
+      "balance": 500
     },
     {
       "id": 2,
@@ -22,17 +22,17 @@
   "stocks": [
     {
       "id": 4,
-      "ticker": "ABCDE",
-      "basisCost": "3133",
+      "ticker": "ABC",
+      "basisCost": "3",
       "currentValue": "2343",
       "description": "ABCD Corp"
     },
     {
       "id": 5,
       "ticker": "YWVNE",
-      "basisCost": "219",
+      "basisCost": 219,
       "currentValue": "151",
-      "description": "Company 2"
+      "description": "YWVNE Co"
     },
     {
       "id": 6,
@@ -46,16 +46,16 @@
     {
       "id": 7,
       "issuingAgency": "US Treasury",
-      "bondSeries": "General",
-      "initialValue": 1000,
-      "targetValue": "160",
+      "bondSeries": "GeneralWA",
+      "initialValue": 100,
+      "targetValue": 160,
       "maturityInMonths": "36"
     },
     {
       "id": 8,
       "issuingAgency": "US Treasury",
       "bondSeries": "I",
-      "initialValue": "150.0",
+      "initialValue": 150,
       "targetValue": "200.00",
       "maturityInMonths": "60"
     },
@@ -64,7 +64,7 @@
       "issuingAgency": "US Treasury",
       "bondSeries": "EE",
       "initialValue": "50",
-      "targetValue": "200",
+      "targetValue": 200,
       "maturityInMonths": "360"
     }
   ]

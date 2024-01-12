@@ -1,12 +1,6 @@
-import { BondAsset, CashAsset, StockAsset } from '../../types';
-
-export type FinancialAssetsStateType = {
-    bonds: BondAsset[];
-    cash: CashAsset[];
-    stocks: StockAsset[];
-};
+import { CombinedFinancialAssetsStateType } from '../../types';
 
 export type FinancialAssetsContextType = {
-    assets: FinancialAssetsStateType;
+    assets: CombinedFinancialAssetsStateType;
     fetchAssets: () => void;
 };

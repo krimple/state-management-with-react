@@ -1,15 +1,14 @@
 import { Suspense, useEffect, useState } from 'react';
-import { getBonds, getCash, getStocks } from '../../apis';
-
+import { getAssets } from '../../apis';
 import Card from '../../components/Card';
+import { CombinedFinancialAssetsStateType } from '../../types';
 import FinancialAssetsContext from './FinancialAssetsContext';
-import { FinancialAssetsStateType } from './FinancialAssetsContextType';
 import BondAssetsView from './bonds/BondAssetsView';
 import CashAccountsView from './cash/CashAccountsView';
 import StockAssetsView from './stocks/StockAssetsView';
 
 export default function FinancialAssetsContextDriven() {
-    const [assets, setAssets] = useState<FinancialAssetsStateType>({
+    const [assets, setAssets] = useState<CombinedFinancialAssetsStateType>({
         bonds: [],
         cash: [],
         stocks: [],
@@ -17,10 +16,7 @@ export default function FinancialAssetsContextDriven() {
 
     const fetchAssets = async () => {
         try {
-            const stocksData = await getStocks();
-            const bondsData = await getBonds();
-            const cashData = await getCash();
-            setAssets({ stocks: stocksData, bonds: bondsData, cash: cashData });
+            setAssets(await getAssets());
         } catch (e) {
             throw new Error('fetch failed');
         }
@@ -35,14 +31,14 @@ export default function FinancialAssetsContextDriven() {
     return (
         <Suspense fallback={<p>Loading context demo...</p>}>
             <FinancialAssetsContext.Provider value={{ assets, fetchAssets }}>
-                {/*<h3>Using React Context</h3>*/}
+                <h3>Using React Context</h3>
                 <Card title="Stocks">
                     <StockAssetsView />
                 </Card>
                 <Card title="Bonds">
                     <BondAssetsView />
                 </Card>
-                <Card title="CashAccountView">
+                <Card title="Cash">
                     <CashAccountsView />
                 </Card>
             </FinancialAssetsContext.Provider>

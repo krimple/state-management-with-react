@@ -3,7 +3,7 @@ import useFinancialAssets from '../hooks/useFinancialAssets';
 import CashAccountView from './CashAccountView';
 
 export default function CashAccountsView() {
-    const { assets } = useFinancialAssets();
+    const assets = useFinancialAssets().assets;
     const { cash } = assets;
 
     if (!cash) {

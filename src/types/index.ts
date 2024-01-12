@@ -41,3 +41,9 @@ export function isCashAsset(object: any): object is CashAsset {
 }
 
 export type FinancialAssetType = StockAsset | BondAsset | CashAsset;
+
+export type CombinedFinancialAssetsStateType = {
+    bonds: BondAsset[];
+    cash: CashAsset[];
+    stocks: StockAsset[];
+};

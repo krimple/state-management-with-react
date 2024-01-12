@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveAsset } from '../../../apis';
+import { saveCashAccount } from '../../../apis/save-asset';
 import Button from '../../../components/Button';
 import { CashAsset } from '../../../types';
 
@@ -20,7 +20,7 @@ export default function EditCashAccountForm({ cash: originalCashData, onClose }:
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await saveAsset(cashState);
+            await saveCashAccount(cashState);
         } catch (e) {
             alert('Save failed. Check log.');
             console.error(e);

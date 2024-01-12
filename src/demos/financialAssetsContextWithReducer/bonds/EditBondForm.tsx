@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import Button from '../../../components/Button';
 import { BondAsset } from '../../../types';
-import { doSaveAsset } from '../financial-assets-reducer';
+import { doLoadData, doSaveBond } from '../financial-assets-reducer';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer';
 
 interface EditBondFormProps {
@@ -55,9 +55,11 @@ export default function EditBondForm({ bond: originalBondData, onClose }: EditBo
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await doSaveAsset(bondData, dispatch);
+            await doSaveBond(bondData, dispatch);
+            await doLoadData(dispatch);
             onClose();
         } catch (e) {
+            console.error(e);
             alert(
                 'Update failed. If I were a toast system you would like me. Check the logs in your browser and json-server'
             );

@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveAsset } from '../../../apis';
+import { saveStock } from '../../../apis';
 import Button from '../../../components/Button';
 import { StockAsset } from '../../../types';
 import useFinancialAssets from '../hooks/useFinancialAssets';
@@ -23,7 +23,7 @@ export default function EditStockForm({ stock: originalStockData, onClose }: Edi
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await saveAsset(stockState);
+            await saveStock(stockState);
             fetchAssets();
             onClose();
         } catch (e) {

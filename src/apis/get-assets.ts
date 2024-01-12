@@ -1,16 +1,14 @@
-import { BondAsset, CashAsset, FinancialAssetType, StockAsset } from '../types';
+import { BondAsset, CashAsset, CombinedFinancialAssetsStateType, StockAsset } from '../types';
 
-export async function getAssets() {
-    const responses = await Promise.all([fetch('/api/cash'), fetch('/api/bonds'), fetch('/api/stocks')]);
-    if (responses.find((r) => !r.ok)) {
-        throw new Error('Failed response. Check logs.');
+export async function getAssets(): Promise<CombinedFinancialAssetsStateType> {
+    try {
+        const stocksData = await getStocks();
+        const bondsData = await getBonds();
+        const cashData = await getCash();
+        return { stocks: stocksData, bonds: bondsData, cash: cashData } as CombinedFinancialAssetsStateType;
+    } catch (e) {
+        throw new Error('fetch failed');
     }
-    const jsonResults = await Promise.all<[any, any, any]>([
-        responses[0].json(),
-        responses[1].json(),
-        responses[2].json(),
-    ]);
-    return jsonResults.flat() as FinancialAssetType[];
 }
 
 export async function getCash() {
