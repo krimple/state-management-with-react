@@ -1,12 +1,12 @@
-import { CashAsset, isCashAsset } from '../../../types';
+import { CashAsset } from '../../../types';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer';
 import CashAccountView from './CashAccountView';
 
 export default function CashAccountsView() {
-    const { assets } = useFinancialAssetsContext().state;
-    const cashElements = assets
+    const cashAssets = useFinancialAssetsContext().state?.assets?.cash;
 
-        .filter((a) => isCashAsset(a))
-        .map((cashAsset) => <CashAccountView key={cashAsset.id} cash={cashAsset as CashAsset} />);
+    const cashElements = cashAssets.map((cashAsset: CashAsset) => (
+        <CashAccountView key={cashAsset.id} cash={cashAsset} />
+    ));
     return <>{cashElements}</>;
 }

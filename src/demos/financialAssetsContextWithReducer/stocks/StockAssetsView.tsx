@@ -1,11 +1,9 @@
-import { FinancialAssetType, isStockAsset, StockAsset } from '../../../types';
+import { StockAsset } from '../../../types';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer';
 import StockAssetView from './StockAssetView';
 
 export default function StockAssetsView() {
-    const { assets } = useFinancialAssetsContext().state;
-    const stockElements = assets
-        .filter((a) => isStockAsset(a))
-        .map((stock: FinancialAssetType) => <StockAssetView key={stock.id} stock={stock as StockAsset} />);
+    const stockAssets = useFinancialAssetsContext().state?.assets?.stocks;
+    const stockElements = stockAssets.map((stock: StockAsset) => <StockAssetView key={stock.id} stock={stock} />);
     return <>{stockElements}</>;
 }

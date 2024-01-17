@@ -4,17 +4,7 @@ import { fetchJsonThrowingErrors } from '../utils/fetch-utils';
 import StockAssetView from './StockAssetView';
 
 export default function StocksView() {
-    const {
-        data,
-        isError,
-        error,
-        isFetching,
-    }: {
-        data: StockAsset[] | undefined;
-        isError: boolean;
-        error: any;
-        isFetching: any;
-    } = useQuery({
+    const { data, isError, error, isFetching } = useQuery({
         queryKey: ['stocks'],
         queryFn: () => fetchJsonThrowingErrors<StockAsset[]>('/api/stocks', { method: 'GET' }),
     });

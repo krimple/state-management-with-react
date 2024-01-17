@@ -1,15 +1,15 @@
-import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { saveAsset } from '../../../apis/save-asset';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { saveBond } from '../../../apis';
 import Button from '../../../components/Button';
 import { BondAsset } from '../../../types';
-import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';
+import useFinancialAssets from '../hooks/useFinancialAssets';
 
 interface EditBondFormProps {
     bond: BondAsset;
     onClose: () => void;
 }
 export default function EditBondForm({ bond: originalBondData, onClose }: EditBondFormProps) {
-    const { fetchAssets } = useContext(FinancialAssetsContext);
+    const { fetchAssets } = useFinancialAssets();
     const [bondData, setBondData] = useState<BondAsset>(originalBondData);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -55,13 +55,12 @@ export default function EditBondForm({ bond: originalBondData, onClose }: EditBo
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await saveAsset(bondData);
+            await saveBond(bondData);
             fetchAssets();
             onClose();
         } catch (e) {
-            alert(
-                'Update failed. If I were a toast system you would like me. Check the logs in your browser and json-server'
-            );
+            alert('Save failed. Check log.');
+            console.error(e);
         }
     }
 

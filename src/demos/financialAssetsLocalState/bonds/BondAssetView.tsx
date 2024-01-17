@@ -1,4 +1,4 @@
-import { useEditing } from '../../../hooks/editingHook';
+import useEditing from '../../../hooks/editingHook';
 import { BondAsset } from '../../../types';
 import BondAssetDisplay from './BondAssetDisplay';
 import EditBondForm from './EditBondForm';

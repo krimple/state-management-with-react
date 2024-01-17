@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
+import '../wdyr';
 import App from './App';
 import FinancialAssetsContextDriven from './demos/financialAssetsContext/FinancialAssetsContextDriven';
 import FinancialAssetsContextWithReducer from './demos/financialAssetsContextWithReducer/FinancialAssetsContextWithReducer';

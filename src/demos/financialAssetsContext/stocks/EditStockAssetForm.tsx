@@ -1,8 +1,8 @@
-import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { saveAsset } from '../../../apis/save-asset';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { saveStock } from '../../../apis';
 import Button from '../../../components/Button';
 import { StockAsset } from '../../../types';
-import { FinancialAssetsContext } from '../useFinancialAssetsWithContext';
+import useFinancialAssets from '../hooks/useFinancialAssets';
 
 interface EditStockFormProps {
     stock: StockAsset;
@@ -10,7 +10,7 @@ interface EditStockFormProps {
 }
 
 export default function EditStockForm({ stock: originalStockData, onClose }: EditStockFormProps) {
-    const { fetchAssets } = useContext(FinancialAssetsContext);
+    const { fetchAssets } = useFinancialAssets();
 
     const [stockState, setFormState] = useState<StockAsset>(originalStockData);
 
@@ -23,7 +23,7 @@ export default function EditStockForm({ stock: originalStockData, onClose }: Edi
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await saveAsset(stockState);
+            await saveStock(stockState);
             fetchAssets();
             onClose();
         } catch (e) {

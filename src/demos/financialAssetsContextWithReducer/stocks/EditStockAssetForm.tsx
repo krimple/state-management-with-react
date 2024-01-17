@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import Button from '../../../components/Button';
 import { StockAsset } from '../../../types';
-import { doSaveAsset } from '../financial-assets-reducer';
+import { doLoadData, doSaveStock } from '../financial-assets-reducer';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer';
 
 interface EditStockFormProps {
@@ -44,7 +44,8 @@ export default function EditStockAssetForm({ stock: initialStockData, onClose }:
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await doSaveAsset(stockData, dispatch);
+            await doSaveStock(stockData, dispatch);
+            await doLoadData(dispatch);
             onClose();
         } catch (e) {
             alert(

@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveAsset } from '../../../apis/save-asset';
-import Button from '../../../components/Button';
-import { BondAsset } from '../../../types';
+import * as saveAPIs from '~/apis/save-asset';
+import Button from '~/components/Button';
+import { BondAsset } from '~/types';
 
 interface EditBondFormProps {
     bond: BondAsset;
@@ -19,27 +19,41 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
     }
 
     async function handleSubmit(event: FormEvent) {
+        console.log('I AM SAVING');
         event.preventDefault();
         try {
-            await saveAsset(bondState);
+            await saveAPIs.saveBond(bondState);
         } catch (e) {
-            alert('Save failed. Check log.');
+            console.log('Save failed. Check log.');
             console.error(e);
         }
         onSave();
     }
 
     return (
-        <form className="grid-form" onSubmit={handleSubmit}>
+        <form className="grid-form" data-testid="bond-form" onSubmit={handleSubmit}>
             <label htmlFor="issuingAgency">Issuing Agency</label>
-            <input type="text" name="issuingAgency" defaultValue={bondState.issuingAgency} onChange={handleChange} />
+            <input
+                type="text"
+                data-testid="issuingAgency"
+                name="issuingAgency"
+                defaultValue={bondState.issuingAgency}
+                onChange={handleChange}
+            />
 
             <label htmlFor="bondSeries">Bond Series</label>
-            <input type="text" name="bondSeries" defaultValue={bondState.bondSeries} onChange={handleChange} />
+            <input
+                type="text"
+                data-testid="bondSeries"
+                name="bondSeries"
+                defaultValue={bondState.bondSeries}
+                onChange={handleChange}
+            />
 
             <label htmlFor="initialValue">Initial Value</label>
             <input
                 type="number"
+                data-testid="initialValue"
                 min={1}
                 step={0.01}
                 name="initialValue"
@@ -50,6 +64,7 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
             <label htmlFor="targetValue">Target Value</label>
             <input
                 type="number"
+                data-testid="targetValue"
                 min={1}
                 step={0.01}
                 name="targetValue"
@@ -60,6 +75,7 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
             <label htmlFor="maturityInMonths">Maturity (Months)</label>
             <input
                 type="number"
+                data-testid="maturityInMonths"
                 name="maturityInMonths"
                 min={1}
                 step={1}

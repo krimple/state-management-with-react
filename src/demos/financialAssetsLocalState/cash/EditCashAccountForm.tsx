@@ -1,14 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveAsset } from '../../../apis/save-asset';
+import { saveCashAccount } from '../../../apis/save-asset';
 import Button from '../../../components/Button';
 import { CashAsset } from '../../../types';
 
-interface EditCashFormProps {
+interface EditCashAccountFormProps {
     cash: CashAsset;
     onClose: () => void;
 }
 
-export default function EditCashAccountForm({ cash: originalCashData, onClose }: EditCashFormProps) {
+export default function EditCashAccountForm({ cash: originalCashData, onClose }: EditCashAccountFormProps) {
     const [cashState, setFormState] = useState<CashAsset>(originalCashData);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -20,7 +20,7 @@ export default function EditCashAccountForm({ cash: originalCashData, onClose }:
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await saveAsset(cashState);
+            await saveCashAccount(cashState);
         } catch (e) {
             alert('Save failed. Check log.');
             console.error(e);

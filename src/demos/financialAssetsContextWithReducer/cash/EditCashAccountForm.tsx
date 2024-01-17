@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import Button from '../../../components/Button';
 import { CashAsset } from '../../../types';
-import { doSaveAsset } from '../financial-assets-reducer';
+import { doLoadData, doSaveCashAccount } from '../financial-assets-reducer';
 import { useFinancialAssetsContext } from '../useFinancialAssetsContextWithReducer';
 
 interface EditCashFormProps {
@@ -41,7 +41,8 @@ export default function EditCashAccountForm({ cash: originalCashData, onClose }:
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await doSaveAsset(cashData, dispatch);
+            await doSaveCashAccount(cashData, dispatch);
+            await doLoadData(dispatch);
             onClose();
         } catch (e) {
             alert(

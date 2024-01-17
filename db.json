@@ -2,9 +2,9 @@
   "cash": [
     {
       "id": 1,
-      "accountNumber": "29801187-4923-6428",
+      "accountNumber": "29801187-4923-64273",
       "accountType": "SAVINGS",
-      "balance": "503"
+      "balance": 500
     },
     {
       "id": 2,
@@ -22,40 +22,40 @@
   "stocks": [
     {
       "id": 4,
-      "ticker": "VSTK",
-      "basisCost": "473.3",
-      "currentValue": "243.2",
-      "description": "Company 1"
+      "ticker": "ABC",
+      "basisCost": "34",
+      "currentValue": "2343",
+      "description": "ABCD Corp"
     },
     {
       "id": 5,
-      "ticker": "YWVN",
-      "basisCost": "219",
+      "ticker": "YWVNE",
+      "basisCost": 219,
       "currentValue": "151",
-      "description": "Company 2"
+      "description": "YWVNE Co"
     },
     {
       "id": 6,
       "ticker": "MYRO",
       "basisCost": 418.66,
       "currentValue": 186.8,
-      "description": "Company 3"
+      "description": "I AM SAVED"
     }
   ],
   "bonds": [
     {
       "id": 7,
       "issuingAgency": "US Treasury",
-      "bondSeries": "General",
+      "bondSeries": "GeneralWA",
       "initialValue": 100,
-      "targetValue": "160",
+      "targetValue": 160,
       "maturityInMonths": "36"
     },
     {
       "id": 8,
       "issuingAgency": "US Treasury",
       "bondSeries": "I",
-      "initialValue": "150.0",
+      "initialValue": 150,
       "targetValue": "200.00",
       "maturityInMonths": "60"
     },
@@ -64,7 +64,7 @@
       "issuingAgency": "US Treasury",
       "bondSeries": "EE",
       "initialValue": "50",
-      "targetValue": "200",
+      "targetValue": 200,
       "maturityInMonths": "360"
     }
   ]

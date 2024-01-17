@@ -1,18 +1,22 @@
-import { FinancialAssetType, isBondAsset, isCashAsset, isStockAsset } from '../types';
+import { BondAsset, CashAsset, FinancialAssetType, StockAsset } from '../types';
 
-export async function saveAsset(asset: FinancialAssetType) {
-    let apiEndpointType = '';
-    if (isBondAsset(asset)) {
-        apiEndpointType = 'bonds';
-    } else if (isCashAsset(asset)) {
-        apiEndpointType = 'cash';
-    } else if (isStockAsset(asset)) {
-        apiEndpointType = 'stocks';
-    } else {
-        throw new Error('Invalid endpoint type');
+export async function saveStock(stock: StockAsset) {
+    return saveAsset('stocks', stock);
+}
+
+export async function saveBond(bond: BondAsset) {
+    return saveAsset('bonds', bond);
+}
+
+export async function saveCashAccount(cashAccount: CashAsset) {
+    return saveAsset('cash', cashAccount);
+}
+
+async function saveAsset(assetType: string, asset: FinancialAssetType) {
+    if (assetType !== 'stocks' && assetType !== 'cash' && assetType !== 'bonds') {
+        throw new Error('Invalid asset type');
     }
-
-    const response = await fetch(`/api/${apiEndpointType}/${asset.id}`, {
+    const response = await fetch(`/api/${assetType}/${asset.id}`, {
         headers: {
             'Content-Type': 'application/json',
         },

@@ -1,1 +1,2 @@
-export { getAssets } from './get-assets';
+export * from './get-assets';
+export * from './save-asset';
