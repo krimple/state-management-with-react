@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 function App() {
     return (
         <div>
-            <h1>React State Management Demos</h1>
+            <h1>React Data Management Demos</h1>
             <nav>
                 <ul className="px-1 md:px-4 flex flex-row text-blue-800 underline">
                     <li className="mr-4">

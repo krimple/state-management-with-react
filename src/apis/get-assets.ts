@@ -2,7 +2,7 @@ import { BondAsset, CashAsset, CombinedFinancialAssetsStateType, StockAsset } fr
 
 export async function getAssets(): Promise<CombinedFinancialAssetsStateType> {
     try {
-        const stocksData = await getStocks();
+        let stocksData = await getStocks();
         const bondsData = await getBonds();
         const cashData = await getCash();
         return { stocks: stocksData, bonds: bondsData, cash: cashData } as CombinedFinancialAssetsStateType;

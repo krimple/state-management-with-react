@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveBond } from '../../../apis/save-asset';
-import Button from '../../../components/Button';
-import { BondAsset } from '../../../types';
+import * as saveAPIs from '~/apis/save-asset';
+import Button from '~/components/Button';
+import { BondAsset } from '~/types';
 
 interface EditBondFormProps {
     bond: BondAsset;
@@ -19,9 +19,10 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
     }
 
     async function handleSubmit(event: FormEvent) {
+        console.log('I AM SAVING');
         event.preventDefault();
         try {
-            await saveBond(bondState);
+            await saveAPIs.saveBond(bondState);
         } catch (e) {
             console.log('Save failed. Check log.');
             console.error(e);
@@ -30,7 +31,7 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
     }
 
     return (
-        <form className="grid-form" data-testid="form" onSubmit={handleSubmit}>
+        <form className="grid-form" data-testid="bond-form" onSubmit={handleSubmit}>
             <label htmlFor="issuingAgency">Issuing Agency</label>
             <input
                 type="text"

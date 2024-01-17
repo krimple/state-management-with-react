@@ -56,7 +56,7 @@ export default function financialAssetsReducer(state: FinancialAssetsState, acti
             return {
                 assets: {
                     ...state.assets,
-                    bond: state.assets.bonds.map((bondAsset: BondAsset) =>
+                    bonds: state.assets.bonds.map((bondAsset: BondAsset) =>
                         bondAsset.id === action.payload.id ? action.payload : bondAsset
                     ),
                 },
