@@ -19,7 +19,6 @@ export default function EditBondForm({ bond: originalBondData, onSave, onCancel 
     }
 
     async function handleSubmit(event: FormEvent) {
-        console.log('I AM SAVING');
         event.preventDefault();
         try {
             await saveAPIs.saveBond(bondState);

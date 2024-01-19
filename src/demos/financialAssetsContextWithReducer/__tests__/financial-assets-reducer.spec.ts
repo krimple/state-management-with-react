@@ -1,4 +1,4 @@
-import { BondAsset, CashAsset, StockAsset, isCashAsset, isStockAsset } from '~/types';
+import { BondAsset, CashAsset, StockAsset, isBondAsset, isCashAsset, isStockAsset } from '~/types';
 import financialAssetsReducer, { FinancialAssetsState } from '../financial-assets-reducer';
 
 describe('Financial Assets Context Reducer', () => {
@@ -71,11 +71,12 @@ describe('Financial Assets Context Reducer', () => {
             } as BondAsset,
         });
         const updatedAsset = newState.assets.bonds.find((s: BondAsset) => s.id === 3);
-        expect(updatedAsset).toBeDefined();
-        expect(updatedAsset?.issuingAgency).toBe('The Illuminati');
-        expect(updatedAsset?.bondSeries).toBe('ZZ');
-        expect(updatedAsset?.initialValue).toBe(10.5);
-        expect(updatedAsset?.targetValue).toBe(30.4);
+        expect(isBondAsset(updatedAsset)).toBeTruthy();
+        const bondAsset = updatedAsset as BondAsset;
+        expect(bondAsset.issuingAgency).toBe('The Illuminati');
+        expect(bondAsset.bondSeries).toBe('ZZ');
+        expect(bondAsset.initialValue).toBe(10.5);
+        expect(bondAsset.targetValue).toBe(30.4);
     });
 
     it('should read when updating cash in item #2', () => {
