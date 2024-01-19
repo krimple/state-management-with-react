@@ -54,11 +54,14 @@ describe('Financial Assets Context Reducer', () => {
         const updatedAsset = newState.assets.stocks.find((s: StockAsset) => s.id === 1);
         expect(isStockAsset(updatedAsset)).toBeTruthy();
         const stockAsset = updatedAsset as StockAsset;
-        expect(stockAsset.ticker).toBe('ZAMAZON');
-        expect(stockAsset.basisCost).toBe(30.4);
-        expect(stockAsset.description).toBe('Blamazon.com, Inc.');
+        expect(stockAsset).toEqual({
+            id: 1,
+            ticker: 'ZAMAZON',
+            basisCost: 30.4,
+            description: 'Blamazon.com, Inc.',
+        });
     });
-    it('should update bond in item #3', () => {
+    it('properly update a bond asset', () => {
         const newState: FinancialAssetsState = financialAssetsReducer(state, {
             type: 'UPDATE_BOND_ASSET',
             payload: {
@@ -73,13 +76,17 @@ describe('Financial Assets Context Reducer', () => {
         const updatedAsset = newState.assets.bonds.find((s: BondAsset) => s.id === 3);
         expect(isBondAsset(updatedAsset)).toBeTruthy();
         const bondAsset = updatedAsset as BondAsset;
-        expect(bondAsset.issuingAgency).toBe('The Illuminati');
-        expect(bondAsset.bondSeries).toBe('ZZ');
-        expect(bondAsset.initialValue).toBe(10.5);
-        expect(bondAsset.targetValue).toBe(30.4);
+        expect(bondAsset).toEqual({
+            id: 3,
+            issuingAgency: 'The Illuminati',
+            bondSeries: 'ZZ',
+            initialValue: 10.5,
+            targetValue: 30.4,
+            maturityInMonths: 20,
+        });
     });
 
-    it('should read when updating cash in item #2', () => {
+    it('should properly update a cash asset', () => {
         const newState: FinancialAssetsState = financialAssetsReducer(state, {
             type: 'UPDATE_CASH_ASSET',
             payload: {
@@ -92,8 +99,11 @@ describe('Financial Assets Context Reducer', () => {
         const updatedAsset = newState.assets.cash.find((s: CashAsset) => s.id === 2);
         expect(isCashAsset(updatedAsset)).toBeTruthy();
         const cashAsset = updatedAsset as CashAsset;
-        expect(cashAsset.balance).toBe(10.4);
-        expect(cashAsset.accountType).toBe('CHECKING');
-        expect(cashAsset.accountNumber).toBe('999999');
+        expect(cashAsset).toEqual({
+            id: 2,
+            accountNumber: '999999',
+            accountType: 'CHECKING',
+            balance: 10.4,
+        });
     });
 });
