@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { getBonds } from '../../../apis';
-import { BondAsset } from '../../../types';
+import { getBonds } from '@/apis';
+import { BondAsset } from '@/types';
+import { useCallback, useEffect, useState } from 'react';
 import BondAssetView from './BondAssetView';
 
 export default function BondAssetsView() {
@@ -12,9 +12,9 @@ export default function BondAssetsView() {
         })();
     }, []);
 
-    async function loadData() {
+    const loadData = useCallback(async () => {
         setBonds(await getBonds());
-    }
+    }, []);
 
     const bondElements = bonds.map((bondEntry) => (
         <BondAssetView key={bondEntry.id} bond={bondEntry} onUpdated={loadData} />

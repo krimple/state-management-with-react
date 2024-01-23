@@ -1,6 +1,6 @@
-import Button from '../../../components/Button';
-import NumberFormatter from '../../../components/NumberFormatter';
-import { CashAsset } from '../../../types';
+import Button from '@/components/Button';
+import NumberFormatter from '@/components/NumberFormatter';
+import { CashAsset } from '@/types';
 
 interface CashDisplayProps {
     cash: CashAsset;

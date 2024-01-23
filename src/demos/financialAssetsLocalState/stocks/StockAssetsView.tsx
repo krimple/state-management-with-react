@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { getStocks } from '../../../apis';
-import { StockAsset } from '../../../types';
+import { getStocks } from '@/apis';
+import { StockAsset } from '@/types';
+import { useCallback, useEffect, useState } from 'react';
 import StockAssetView from './StockAssetView';
 
 /**
@@ -23,9 +23,9 @@ export default function StockAssetsView() {
     // this is used for both loading the original stock list and
     // refreshing once a stock component has been
     // edited.
-    async function loadData() {
+    const loadData = useCallback(async () => {
         setStocks(await getStocks());
-    }
+    }, []);
 
     // Generate our stock components from the collection of stocks returned
     const stockElements = stocks.map((stockEntry) => (

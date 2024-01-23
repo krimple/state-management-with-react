@@ -1,5 +1,5 @@
+import * as saveAPIs from '@/apis/save-asset';
 import { act, fireEvent, render } from '@testing-library/react';
-import * as saveAPIs from '~/apis/save-asset';
 import EditBondForm from '../EditBondForm';
 
 describe('EditBondForm', () => {

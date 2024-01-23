@@ -1,6 +1,6 @@
-import Button from '../../../components/Button';
-import NumberFormatter from '../../../components/NumberFormatter';
-import { BondAsset } from '../../../types';
+import Button from '@/components/Button';
+import NumberFormatter from '@/components/NumberFormatter';
+import { BondAsset } from '@/types';
 
 interface BondAssetDisplayProps {
     bond: BondAsset;

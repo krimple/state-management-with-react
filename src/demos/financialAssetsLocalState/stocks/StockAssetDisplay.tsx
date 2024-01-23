@@ -1,7 +1,7 @@
+import Button from '@/components/Button';
+import NumberFormatter from '@/components/NumberFormatter';
+import { StockAsset } from '@/types';
 import { useMemo } from 'react';
-import Button from '../../../components/Button';
-import NumberFormatter from '../../../components/NumberFormatter';
-import { StockAsset } from '../../../types';
 
 interface StockDisplayProps {
     stock: StockAsset;
@@ -9,7 +9,7 @@ interface StockDisplayProps {
 }
 
 export default function StockAssetDisplay({ stock, toggleForm }: StockDisplayProps) {
-    const onToggleForm = useMemo(() => toggleForm, [toggleForm]);
+    const onToggleForm = useMemo(() => toggleForm, []);
     return (
         <div className="asset-display-container">
             <Button type="button" label="Edit" onClick={onToggleForm} />

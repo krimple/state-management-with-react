@@ -1,7 +1,7 @@
+import * as saveAPIs from '@/apis/save-asset';
+import Button from '@/components/Button';
+import { BondAsset } from '@/types';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import * as saveAPIs from '~/apis/save-asset';
-import Button from '~/components/Button';
-import { BondAsset } from '~/types';
 
 interface EditBondFormProps {
     bond: BondAsset;

@@ -1,7 +1,7 @@
+import { saveCashAccount } from '@/apis/save-asset';
+import Button from '@/components/Button';
+import { CashAsset } from '@/types';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveCashAccount } from '../../../apis/save-asset';
-import Button from '../../../components/Button';
-import { CashAsset } from '../../../types';
 
 interface EditCashAccountFormProps {
     cash: CashAsset;

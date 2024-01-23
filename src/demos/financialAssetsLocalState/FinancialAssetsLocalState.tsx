@@ -1,4 +1,4 @@
-import Card from '../../components/Card';
+import Card from '@/components/Card';
 import BondAssetsView from './bonds/BondAssetsView';
 import CashAccountsView from './cash/CashAccountsView';
 import StockAssetsView from './stocks/StockAssetsView';

@@ -1,5 +1,6 @@
-import useEditing from '../../../hooks/editingHook';
-import { StockAsset } from '../../../types';
+import useEditing from '@/hooks/editingHook';
+import { StockAsset } from '@/types';
+import { useCallback } from 'react';
 import EditStockAssetForm from './EditStockAssetForm';
 import StockAssetDisplay from './StockAssetDisplay';
 
@@ -20,15 +21,15 @@ export default function StockAssetView({ stock, onUpdated }: StockProps) {
     // state for this component: whether we're showing the editor form or the list of attributes
     const { isEditing, toggleEditing } = useEditing(false);
 
-    function handleSaveCompleted() {
+    const handleSaveCompleted = useCallback(() => {
         toggleEditing();
         onUpdated();
-    }
+    }, []);
 
     // TODO - turn form toggle into hook?
-    function toggleForm() {
+    const toggleForm = useCallback(() => {
         toggleEditing();
-    }
+    }, []);
 
     return (
         <div className="asset-display-row">

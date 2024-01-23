@@ -1,5 +1,6 @@
-import useEditing from '../../../hooks/editingHook';
-import { CashAsset } from '../../../types';
+import useEditing from '@/hooks/editingHook';
+import { CashAsset } from '@/types';
+import { useCallback } from 'react';
 import CashAccountDisplay from './CashAccountDisplay';
 import EditCashAccountForm from './EditCashAccountForm';
 
@@ -11,15 +12,15 @@ export interface CashProps {
 export default function CashAccountView({ cash, onUpdated }: CashProps) {
     const { isEditing, toggleEditing } = useEditing(false);
 
-    function handleSaveCompleted() {
+    const handleSaveCompleted = useCallback(() => {
         toggleEditing();
         onUpdated();
-    }
+    }, []);
 
     // TODO - turn form toggle into hook?
-    function toggleForm() {
+    const toggleForm = useCallback(() => {
         toggleEditing();
-    }
+    }, []);
 
     return (
         <div className="asset-display-row">

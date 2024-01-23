@@ -1,7 +1,7 @@
+import { saveStock } from '@/apis/save-asset';
+import Button from '@/components/Button';
+import { StockAsset } from '@/types';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { saveStock } from '../../../apis/save-asset';
-import Button from '../../../components/Button';
-import { StockAsset } from '../../../types';
 
 interface EditStockFormProps {
     stock: StockAsset;
