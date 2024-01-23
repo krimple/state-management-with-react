@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 /**
  * A custom React hook for managing a boolean value that represents whether an element is in editing mode.
  *
@@ -7,9 +7,9 @@ import { useState } from 'react';
  */
 function useEditing(defaultValue: boolean) {
     const [isEditing, setIsEditing] = useState<boolean>(defaultValue);
-    function toggleEditing(): void {
+    const toggleEditing = useCallback((): void => {
         setIsEditing((prevState) => !prevState);
-    }
+    }, []);
 
     return {
         isEditing,
